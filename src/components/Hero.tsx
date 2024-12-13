@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import RollingCarousel from './RollingCarousel'
-import { Linkedin, Instagram, Twitter, Mail, ArrowRight } from 'lucide-react'
+import { Linkedin, Instagram, Mail, ArrowRight } from 'lucide-react'
 
 const Hero: React.FC = () => {
   const titles = ["CEO", "Co-Founder", "Fintech Innovator", "Strategic Advisor", "Thought Leader"]
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="mt-6 max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed"
           >
-            Shaping the future of technology and finance. Featured in Marquis Who's Who 2022 and recognized as one of the 10 Most Influential Tech Leaders.
+            Shaping the future of technology and finance. Featured in Marquis Who&apos;s Who 2022 and recognized as one of the 10 Most Influential Tech Leaders.
           </motion.p>
 
           {/* Social Links */}

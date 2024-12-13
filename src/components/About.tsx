@@ -5,10 +5,6 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, Award, GraduationCap, Globe2, Users, Languages } from 'lucide-react'
 
-interface AboutSectionProps {
-  className?: string;
-}
-
 // Card Component with enhanced glass effect
 const Card: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => {
   return (
