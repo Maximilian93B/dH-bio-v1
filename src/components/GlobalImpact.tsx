@@ -24,7 +24,7 @@ const GlobalImpactHighlight: React.FC = () => {
               {/* Aspect ratio container */}
               <div className="relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3]">
                 <Image
-                  src="/Untitled design.png"
+                  src="/GlobalImpact.jpg"
                   alt="David Hanegraaf speaking at COP 27"
                   fill
                   className="object-cover transition-all duration-500 hover:scale-105 hover:brightness-110"
