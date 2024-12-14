@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef , useState} from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion'
 import Image from 'next/image'
 
@@ -29,57 +29,44 @@ const Timeline: React.FC = () => {
   }, [controls, inView])
 
   return (
-    <section ref={ref} className="py-20 md:py-32 bg-gradient-to-b from-black via-black to-black/95 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(234,179,8,0.03)_1px,_transparent_1px)] bg-[length:20px_20px]" />
+    <section ref={ref} className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.02)_1px,_transparent_1px)] bg-[length:20px_20px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16 md:mb-24"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600">
-              Career Milestones
-            </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
+            Career Milestones
           </h2>
           <motion.p 
-            className="mt-6 text-lg md:text-xl text-yellow-100/70 max-w-3xl mx-auto"
+            className="text-base md:text-xl text-black/70 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             A journey of innovation, leadership, and transformative achievements
           </motion.p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row">
-          <div className="lg:hidden mb-8 px-4">
-            <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-xl border border-yellow-500 max-w-[300px] mx-auto">
-              <Image
-                src="/Dave_About.jpeg"
-                alt="David Hanegraaf"
-                fill
-                style={{ objectFit: "cover" }}
-                className="rounded-lg"
-              />
-            </div>
-          </div>
-          <div className="lg:w-2/3 pr-0 lg:pr-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12"> 
+          <div className="lg:w-2/3">
             <div className="relative">
-              <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5 bg-gradient-to-b from-yellow-500/50 via-yellow-500/30 to-transparent"></div>
+              <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5  bg-gradient-to-r from-emerald-500 to-blue-500"></div>
               {timelineEvents.map((event, index) => (
                 <motion.div 
                   key={index}
                   variants={{
-                    hidden: { opacity: 0, y: 50 },
+                    hidden: { opacity: 0, y: 20 },
                     visible: (i) => ({
                       opacity: 1,
                       y: 0,
                       transition: {
                         delay: i * 0.1,
-                        duration: 0.6,
+                        duration: 0.5,
                         ease: "easeOut"
                       }
                     })
@@ -87,22 +74,22 @@ const Timeline: React.FC = () => {
                   custom={index}
                   initial="hidden"
                   animate={controls}
-                  className="mb-8 md:mb-12 flex flex-col lg:flex-row items-start lg:items-center w-full pl-16 lg:pl-0"
+                  className="mb-6 md:mb-8 flex flex-col lg:flex-row items-start lg:items-center w-full pl-16 lg:pl-0"
                 >
                   <div className="lg:w-5/12 lg:text-right pr-8 mb-2 lg:mb-0">
-                    <h3 className="text-xl md:text-2xl font-bold text-yellow-500">{event.year}</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-black">{event.year}</h3>
                   </div>
                   <div className="absolute left-6 lg:static lg:w-2/12 flex justify-start lg:justify-center">
                     <motion.div 
-                      className="w-4 h-4 md:w-5 md:h-5 bg-yellow-500 rounded-full cursor-pointer flex items-center justify-center"
-                      whileHover={{ scale: 1.2, backgroundColor: "#FCD34D" }}
+                      className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full cursor-pointer flex items-center justify-center"
+                      whileHover={{ scale: 1.2, backgroundColor: "rgba(0,0,0,0.6)" }}
                       onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
                     >
                       <motion.span
                         initial={{ rotate: 0 }}
                         animate={{ rotate: expandedIndex === index ? 45 : 0 }}
                         transition={{ duration: 0.3 }}
-                        className="text-black font-bold text-base md:text-lg"
+                        className="text-white font-bold text-sm"
                       >
                         +
                       </motion.span>
@@ -110,11 +97,11 @@ const Timeline: React.FC = () => {
                   </div>
                   <div className="lg:w-5/12 pl-0 lg:pl-8">
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
+                      transition={{ duration: 0.4 }}
                     >
-                      <p className="text-lg md:text-xl font-semibold text-white mb-2">{event.event}</p>
+                      <p className="text-base md:text-lg font-semibold text-black mb-2">{event.event}</p>
                       <AnimatePresence>
                         {expandedIndex === index && (
                           <motion.p
@@ -122,7 +109,7 @@ const Timeline: React.FC = () => {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="text-base md:text-lg text-gray-100"
+                            className="text-sm md:text-base text-black/70"
                           >
                             {event.details}
                           </motion.p>
@@ -134,9 +121,9 @@ const Timeline: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="hidden lg:block lg:w-1/4 mt-8 lg:mt-0">
+          <div className="hidden lg:block lg:w-1/3">
             <div className="sticky top-32">
-              <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-xl border border-yellow-500">
+              <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-xl border border-black/5">
                 <Image
                   src="/Dave_About.jpeg"
                   alt="David Hanegraaf"
@@ -150,8 +137,8 @@ const Timeline: React.FC = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
     </section>
   )
 }
