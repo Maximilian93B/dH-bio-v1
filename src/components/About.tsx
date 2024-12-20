@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Award, GraduationCap, Globe2, Users, Languages, ArrowRight } from 'lucide-react'
+import { Award, GraduationCap, Globe2, Users, TrendingUp, ArrowRight } from 'lucide-react'
 
 const InfoSection: React.FC<{ title: string; content: string; icon: React.ReactNode; index: number }> = ({ 
   title, 
@@ -16,17 +16,17 @@ const InfoSection: React.FC<{ title: string; content: string; icon: React.ReactN
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
-      className="group p-5 md:p-6 bg-white border border-black/5 rounded-lg hover:border-black/20 transition-all duration-300 shadow-sm hover:shadow-md"
+      className="group p-6 md:p-8 bg-white border border-neutral-200 rounded-lg hover:border-neutral-300 transition-all duration-300"
     >
       <div className="flex items-start gap-4">
-        <div className="mt-1 p-2 bg-black/5 rounded-lg group-hover:bg-black/10 transition-colors duration-300">
+        <div className="mt-1 p-3 bg-neutral-100 rounded-lg group-hover:bg-neutral-200 transition-colors duration-300">
           {icon}
         </div>
         <div>
-          <h3 className="text-base md:text-lg font-semibold text-black mb-2">
+          <h3 className="text-lg md:text-xl font-semibold text-neutral-900 mb-2">
             {title}
           </h3>
-          <p className="text-sm md:text-base text-black/70 leading-relaxed">
+          <p className="text-base md:text-lg text-neutral-600 leading-relaxed">
             {content}
           </p>
         </div>
@@ -38,36 +38,36 @@ const InfoSection: React.FC<{ title: string; content: string; icon: React.ReactN
 const About: React.FC = () => {
   const sections = [
     {
-      title: "Experience",
-      content: "20+ years in executive roles, specializing in finance and tech startups.",
-      icon: <Award className="w-5 h-5 text-black/70" />
+      title: "Fintech Pioneer",
+      content: "20+ years driving innovation at the intersection of finance and technology.",
+      icon: <TrendingUp className="w-6 h-6 text-gray-700" />
     },
     {
-      title: "Education",
-      content: "DipT, BSc., MBA - Bridging technical expertise with business acumen.",
-      icon: <GraduationCap className="w-5 h-5 text-black/70" />
+      title: "Executive Leadership",
+      content: "C-Suite roles (CEO, CFO, CSO) in multiple successful Fintech startups.",
+      icon: <Award className="w-6 h-6 text-gray-700" />
     },
     {
       title: "Global Impact",
-      content: "Structured projects across North America, Europe, Asia, Africa, and Australia.",
-      icon: <Globe2 className="w-5 h-5 text-black/70" />
+      content: "Led transformative Fintech projects across North America, Europe, and Asia.",
+      icon: <Globe2 className="w-6 h-6 text-gray-700" />
     },
     {
-      title: "Leadership",
-      content: "C-Suite roles (CEO, CFO, CSO) and active board memberships.",
-      icon: <Users className="w-5 h-5 text-black/70" />
+      title: "Thought Leadership",
+      content: "Regular speaker at global Fintech conferences and active board member.",
+      icon: <Users className="w-6 h-6 text-gray-700" />
     },
     {
-      title: "Languages",
-      content: "Fluent in English and Spanish for global business communication.",
-      icon: <Languages className="w-5 h-5 text-black/70" />
+      title: "Education",
+      content: "MBA in Finance, BSc in Computer Science - Bridging technology with financial acumen.",
+      icon: <GraduationCap className="w-6 h-6 text-gray-700" />
     }
   ]
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-white relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.02)_1px,_transparent_1px)] bg-[length:20px_20px]" />
+    <section id="about" className="py-20 md:py-32 bg-white relative">
+      {/* Subtle background pattern - more refined */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.02)_1px,_transparent_1px)] bg-[length:24px_24px]" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header Section */}
@@ -75,32 +75,31 @@ const About: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-16 md:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-            Where Finance Meets Innovation
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
+            Strategic Financial Leadership
           </h2>
           <motion.p 
-            className="text-base md:text-xl text-black/70 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Bridging the gap between traditional finance and cutting-edge technology to drive innovation and growth.
+            Delivering exceptional value through strategic innovation and proven expertise in institutional finance and technology.
           </motion.p>
         </motion.div>
 
-        {/* Profile and Info Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Profile Section */}
+        {/* Profile Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <motion.div 
-            className="lg:col-span-4 space-y-6"
+            className="lg:col-span-4 space-y-8"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-white border border-black/5 rounded-lg p-6 md:p-8 text-center shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="relative aspect-square rounded-lg overflow-hidden mb-6 max-w-[240px] mx-auto">
+            <div className="bg-white border border-neutral-200 rounded-lg p-8 md:p-10 text-center">
+              <div className="relative aspect-square rounded-lg overflow-hidden mb-8 max-w-[280px] mx-auto border-2 border-neutral-100">
                 <Image
                   src="/david-about-pic.jpg"
                   alt="David Hanegraaf"
@@ -110,36 +109,38 @@ const About: React.FC = () => {
                   priority
                 />
               </div>
-              <h3 className="text-xl md:text-3xl font-semibold text-black mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-2">
                 David Hanegraaf
               </h3>
-              <p className="text-base md:text-lg text-black/70">
-                Financial Innovator & Tech Enthusiast
+              <p className="text-lg md:text-xl text-neutral-600">
+                Investment Strategist & Technology Pioneer
               </p>
             </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Quick Stats - More refined styling */}
+            <div className="grid grid-cols-2 gap-6">
               {[
-                { value: "20+", label: "Years Experience" },
-                { value: "50+", label: "Global Projects" }
+                { value: "20+", label: "Years of Excellence" },
+                { value: "$500M+", label: "Capital Deployed" },
+                { value: "5", label: "Strategic Exits" },
+                { value: "30+", label: "Global Markets" }
               ].map((stat, index) => (
                 <motion.div 
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
-                  className=" bg-gradient-to-r from-emerald-500 to-blue-500 rounded-lg p-4 text-center hover:bg-black/10 transition-colors duration-300"
+                  className="bg-white border border-neutral-200 rounded-lg p-6 text-center"
                 >
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-base md:text-lg text-white">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl font-bold text-neutral-900 mb-1">{stat.value}</div>
+                  <div className="text-sm md:text-base text-neutral-600">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
           {/* Info Sections Grid */}
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             {sections.map((section, index) => (
               <InfoSection
                 key={index}
@@ -152,29 +153,25 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Scroll Down Arrow */}
+        {/* Removed decorative borders and simplified scroll arrow */}
         <motion.div 
-          className="mt-12 md:mt-16 text-center"
+          className="mt-16 md:mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <a 
             href="#specialties" 
-            className="inline-block p-4 text-black/70 hover:text-black transition-colors duration-300"
+            className="inline-block p-4 text-neutral-600 hover:text-neutral-900 transition-colors duration-300"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById('specialties')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            <ArrowRight className="w-5 h-5 rotate-90" />
+            <ArrowRight className="w-6 h-6 rotate-90" />
           </a>
         </motion.div>
       </div>
-
-      {/* Decorative borders */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
     </section>
   )
 }

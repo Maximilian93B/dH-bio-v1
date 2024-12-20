@@ -30,7 +30,7 @@ const Timeline: React.FC = () => {
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.02)_1px,_transparent_1px)] bg-[length:20px_20px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.01)_1px,_transparent_1px)] bg-[length:24px_24px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -39,11 +39,11 @@ const Timeline: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4">
             Career Milestones
           </h2>
           <motion.p 
-            className="text-base md:text-xl text-black/70 max-w-2xl mx-auto"
+            className="text-base md:text-xl text-neutral-600 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -55,7 +55,7 @@ const Timeline: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12"> 
           <div className="lg:w-2/3">
             <div className="relative">
-              <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5  bg-gradient-to-r from-emerald-500 to-blue-500"></div>
+              <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5 bg-neutral-200"></div>
               {timelineEvents.map((event, index) => (
                 <motion.div 
                   key={index}
@@ -77,19 +77,23 @@ const Timeline: React.FC = () => {
                   className="mb-6 md:mb-8 flex flex-col lg:flex-row items-start lg:items-center w-full pl-16 lg:pl-0"
                 >
                   <div className="lg:w-5/12 lg:text-right pr-8 mb-2 lg:mb-0">
-                    <h3 className="text-lg md:text-xl font-bold text-black">{event.year}</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-neutral-900">{event.year}</h3>
                   </div>
                   <div className="absolute left-6 lg:static lg:w-2/12 flex justify-start lg:justify-center">
                     <motion.div 
-                      className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full cursor-pointer flex items-center justify-center"
-                      whileHover={{ scale: 1.2, backgroundColor: "rgba(0,0,0,0.6)" }}
+                      className="w-4 h-4 bg-neutral-900 rounded-full cursor-pointer flex items-center justify-center"
+                      whileHover={{ scale: 1.2, backgroundColor: "#404040" }}
                       onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
                     >
                       <motion.span
                         initial={{ rotate: 0 }}
                         animate={{ rotate: expandedIndex === index ? 45 : 0 }}
                         transition={{ duration: 0.3 }}
-                        className="text-white font-bold text-sm"
+                        className="text-white font-bold text-sm leading-none flex items-center justify-center"
+                        style={{ 
+                          height: '16px',
+                          marginTop: '-1px'
+                        }}
                       >
                         +
                       </motion.span>
@@ -101,7 +105,7 @@ const Timeline: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <p className="text-base md:text-lg font-semibold text-black mb-2">{event.event}</p>
+                      <p className="text-base md:text-lg font-semibold text-neutral-900 mb-2">{event.event}</p>
                       <AnimatePresence>
                         {expandedIndex === index && (
                           <motion.p
@@ -109,7 +113,7 @@ const Timeline: React.FC = () => {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="text-sm md:text-base text-black/70"
+                            className="text-sm md:text-base text-neutral-600"
                           >
                             {event.details}
                           </motion.p>
@@ -123,7 +127,7 @@ const Timeline: React.FC = () => {
           </div>
           <div className="hidden lg:block lg:w-1/3">
             <div className="sticky top-32">
-              <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-xl border border-black/5">
+              <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-sm border border-neutral-200">
                 <Image
                   src="/Dave_About.jpeg"
                   alt="David Hanegraaf"
@@ -137,8 +141,8 @@ const Timeline: React.FC = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-neutral-200" />
+      <div className="absolute top-0 left-0 w-full h-px bg-neutral-200" />
     </section>
   )
 }

@@ -55,68 +55,87 @@ const GridBackground: React.FC = () => {
           />
         ))}
       </div>
-      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 800">
-        <defs>
-          <linearGradient id="sustainableGrowth" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(72, 187, 120, 0.2)" />
-            <stop offset="100%" stopColor="rgba(4, 120, 87, 0.5)" />
-          </linearGradient>
-          <linearGradient id="globalInnovation" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(79, 70, 229, 0.2)" />
-            <stop offset="100%" stopColor="rgba(67, 56, 202, 0.5)" />
-          </linearGradient>
-          <linearGradient id="techFuture" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(45, 212, 191, 0.2)" />
-            <stop offset="100%" stopColor="rgba(17, 94, 89, 0.5)" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M0,600 Q200,550 400,400 T800,100"
-          fill="none"
-          stroke="url(#sustainableGrowth)"
-          strokeWidth="4"
-          className="trend-line hidden sm:block"
-        />
-        <path
-          d="M0,500 Q300,400 500,300 T800,200"
-          fill="none"
-          stroke="url(#globalInnovation)"
-          strokeWidth="3"
-          className="trend-line hidden sm:block"
-        />
-        <path
-          d="M0,400 Q200,380 400,250 T800,50"
-          fill="none"
-          stroke="url(#techFuture)"
-          strokeWidth="3"
-          className="trend-line hidden sm:block"
-        />
-        <path
-          d="M0,600 Q100,500 200,400 T400,100"
-          fill="none"
-          stroke="url(#sustainableGrowth)"
-          strokeWidth="3"
-          className="trend-line sm:hidden"
-        />
-        <path
-          d="M0,500 Q150,400 250,300 T400,200"
-          fill="none"
-          stroke="url(#globalInnovation)"
-          strokeWidth="2"
-          className="trend-line sm:hidden"
-        />
-        <path
-          d="M0,400 Q100,380 200,250 T400,50"
-          fill="none"
-          stroke="url(#techFuture)"
-          strokeWidth="2"
-          className="trend-line sm:hidden"
-        />
-      </svg>
+      
+      {/* Enhanced MinimalBars with responsive bar count */}
+      <div className="absolute bottom-0 left-0 right-0 h-72 opacity-[0.25]">
+        <div className="flex items-end h-full gap-[2px] sm:gap-[2px]">
+          {Array.from({ length: 40 }).map((_, i) => {
+            const gradientClass = i % 3 === 0 
+              ? "bg-gradient-to-t from-emerald-500 to-emerald-300"
+              : i % 3 === 1
+              ? "bg-gradient-to-t from-blue-500 to-blue-300"
+              : "bg-gradient-to-t from-teal-500 to-teal-300";
+            
+            return (
+              <motion.div
+                key={i}
+                className={`hidden sm:block flex-1 ${gradientClass}`}
+                initial={{ height: '20%' }}
+                animate={{ 
+                  height: `${20 + Math.random() * 60}%`,
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{
+                  height: {
+                    duration: 3 + Math.random() * 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                    delay: i * 0.05,
+                  },
+                  opacity: {
+                    duration: 4 + Math.random() * 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                    delay: i * 0.05,
+                  }
+                }}
+              />
+            );
+          })}
+          
+          {/* Mobile bars (fewer bars for better spacing) */}
+          {Array.from({ length: 20 }).map((_, i) => {
+            const gradientClass = i % 3 === 0 
+              ? "bg-gradient-to-t from-emerald-500 to-emerald-300"
+              : i % 3 === 1
+              ? "bg-gradient-to-t from-blue-500 to-blue-300"
+              : "bg-gradient-to-t from-teal-500 to-teal-300";
+            
+            return (
+              <motion.div
+                key={i}
+                className={`block sm:hidden flex-1 ${gradientClass}`}
+                initial={{ height: '20%' }}
+                animate={{ 
+                  height: `${20 + Math.random() * 60}%`,
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{
+                  height: {
+                    duration: 3 + Math.random() * 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                    delay: i * 0.05,
+                  },
+                  opacity: {
+                    duration: 4 + Math.random() * 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                    delay: i * 0.05,
+                  }
+                }}
+              />
+            );
+          })}
+        </div>
+      </div>
     </div>
   )
 }
-
 // Main Hero Component
 const Hero: React.FC = () => {
   const titles = ["CEO", "Co-Founder", "Fintech Innovator", "Strategic Advisor", "Thought Leader"]
@@ -247,17 +266,27 @@ const Hero: React.FC = () => {
                   block: 'start'
                 });
               }}
-              className="group inline-flex items-center justify-center px-12 py-4 text-lg md:text-xl font-medium rounded-full text-white  bg-gradient-to-r from-emerald-500 to-blue-500"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-medium rounded-lg text-white bg-black overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              About Dave
-              <ArrowRight className="ml-2 w-6 h-6 transition-transform group-hover:translate-x-1" />
+              <span className="relative z-10 flex items-center">
+                About Dave
+                <motion.span
+                  className="ml-2"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <ArrowRight className="w-5 h-5" />
+                </motion.span>
+              </span>
+              <div
+                className="absolute inset-0 w-full h-full bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
             </motion.a>
           </motion.div>
         </div>

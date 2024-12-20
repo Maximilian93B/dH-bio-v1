@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
     <footer className="relative bg-white overflow-hidden">
       
       {/* Top Border */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-neutral-200" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Main Footer Content */}
@@ -42,10 +42,10 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4">
               Let&apos;s Connect
             </h2>
-            <p className="text-base md:text-xl text-black/70 max-w-2xl mx-auto">
+            <p className="text-base md:text-xl text-neutral-600 max-w-2xl mx-auto">
               Interested in discussing finance, technology, or sustainable innovation? 
               I am always open to meaningful conversations and collaborations.
             </p>
@@ -64,8 +64,8 @@ const Footer: React.FC = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white hover:bg-black/10 hover:text-black 
-                  transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-black/20"
+                className="p-3 rounded-lg bg-neutral-900 text-white hover:bg-neutral-800 
+                  transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-neutral-300"
                 whileHover={{ y: -2 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -86,8 +86,8 @@ const Footer: React.FC = () => {
           >
             <button
               onClick={scrollToTop}
-              className="group p-3 rounded-full  bg-gradient-to-r from-emerald-500 to-blue-500 text-white hover:bg-black/80 
-                transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-black/20"
+              className="group p-3 rounded-lg bg-neutral-900 text-white hover:bg-neutral-800 
+                transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-neutral-300"
               aria-label="Scroll to top"
             >
               <ArrowUp className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1" />
@@ -96,12 +96,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className="border-t border-black/5 py-8">
+        <div className="border-t border-neutral-200 py-8">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-center text-base text-black/60"
+            className="text-center text-base text-neutral-600"
           >
             <p>© {new Date().getFullYear()} David Hanegraaf. All rights reserved.</p>
           </motion.div>

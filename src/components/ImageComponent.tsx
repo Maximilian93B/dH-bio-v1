@@ -152,8 +152,11 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
-              style={{objectFit:'cover'}}
-              className={`object-cover object-center transition-opacity duration-700 ${
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center 20%'
+              }}
+              className={`object-cover transition-opacity duration-700 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               onLoad={handleImageLoad}
