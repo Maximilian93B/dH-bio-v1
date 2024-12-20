@@ -5,12 +5,7 @@ import { motion } from 'framer-motion'
 const GlobalImpactHighlight: React.FC = () => {
   return (
     <section className="relative py-16 md:py-32 bg-white overflow-hidden">
-      {/* Refined Background Pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.02)_1px,_transparent_1px)] bg-[length:24px_24px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
-      </div>
-      
+    
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Image Section */}
@@ -71,15 +66,15 @@ const GlobalImpactHighlight: React.FC = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-600 leading-relaxed mb-8">
-              David Hanegraaf brings strategic vision to global financial markets, combining technological innovation with institutional investment expertise. His leadership in international forums and advisory roles demonstrates a commitment to driving sustainable financial growth and market transformation.
+              With over two decades of experience across five continents, David Hanegraaf has led transformative initiatives in sustainable finance, technology innovation, and institutional investment. His work spans from Hong Kong&apos;s private equity markets to South Africa&apos;s digital securities, and Canada&apos;s sustainable energy sector.
             </p>
 
             <div className="space-y-6 mb-10">
               {[
-                "Strategic Advisor to Global Investment Forums",
-                "International Market Development Expert",
-                "Financial Innovation Leadership",
-                "Institutional Investment Strategy"
+                "UN Sustainable Development Goals Advocate",
+                "Global Capital Markets Strategist",
+                "Technology & Innovation Leader",
+                "Cross-Border M&A Expert"
               ].map((item, index) => (
                 <motion.div 
                   key={index} 
@@ -107,10 +102,10 @@ const GlobalImpactHighlight: React.FC = () => {
               className="border-l-2 border-neutral-200 pl-6 mt-8"
             >
               <p className="text-lg italic text-neutral-600">
-                &quot;Our focus is on delivering exceptional value through strategic innovation and proven expertise in global markets.&quot;
+                &quot;Our focus is on delivering sustainable value through strategic innovation and proven expertise in global markets.&quot;
               </p>
               <p className="mt-2 text-sm font-medium text-neutral-900">
-                David Hanegraaf
+                David Hanegraaf, Principal & CFO, Global Sustainability Fund
               </p>
             </motion.div>
           </motion.div>

@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform} from 'framer-motion'
-import { Linkedin, Instagram, Mail, ArrowRight } from 'lucide-react'
+import { Linkedin, Mail, ArrowRight } from 'lucide-react'
 
 // TypewriterEffect Component
 const TypewriterEffect: React.FC<{ items: string[], interval: number }> = ({ items }) => {
@@ -138,7 +138,14 @@ const GridBackground: React.FC = () => {
 }
 // Main Hero Component
 const Hero: React.FC = () => {
-  const titles = ["CEO", "Co-Founder", "Fintech Innovator", "Strategic Advisor", "Thought Leader"]
+  const titles = [
+    "Global Finance Expert",
+    "Principal & CFO",
+    "Sustainability Leader",
+    "Technology Pioneer",
+    "Strategic Advisor"
+  ]
+  
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 300], [0, -100])
@@ -146,17 +153,12 @@ const Hero: React.FC = () => {
   const socialLinks = [
     { 
       icon: <Linkedin className="w-6 h-6" />, 
-      href: "https://www.linkedin.com/in/david-hanegraaf/",
+      href: "https://linkedin.com/in/davidhanegraaf",
       label: "LinkedIn"
     },
     { 
-      icon: <Instagram className="w-6 h-6" />, 
-      href: "https://www.instagram.com/dave_hanegraaf999/",
-      label: "Instagram"
-    },
-    { 
       icon: <Mail className="w-6 h-6" />, 
-      href: "mailto:david.hanegraaf@hec.ca",
+      href: "mailto:david@hanegraaf.com",
       label: "Email"
     }
   ]
@@ -223,7 +225,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="mt-6 max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-black leading-relaxed"
           >
-            Shaping the future of technology and finance. Featured in Marquis Who&apos;s Who 2022 and recognized as one of the 10 Most Influential Tech Leaders.
+            Senior financial executive with 25+ years of experience in global markets, sustainable investments, and technology innovation. Currently leading the Global Sustainability Fund, advancing UN innovation initiatives.
           </motion.p>
 
           <motion.div
@@ -271,7 +273,7 @@ const Hero: React.FC = () => {
               whileTap={{ scale: 0.98 }}
             >
               <span className="relative z-10 flex items-center">
-                About Dave
+                Learn More
                 <motion.span
                   className="ml-2"
                   animate={{ x: [0, 4, 0] }}
@@ -284,9 +286,7 @@ const Hero: React.FC = () => {
                   <ArrowRight className="w-5 h-5" />
                 </motion.span>
               </span>
-              <div
-                className="absolute inset-0 w-full h-full bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
+              <div className="absolute inset-0 w-full h-full bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
           </motion.div>
         </div>

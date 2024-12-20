@@ -3,9 +3,10 @@
 import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { StaticImageData } from 'next/image'
 
 interface FullScreenSectionProps {
-  imageSrc: string
+  imageSrc: string | StaticImageData
   title: string
   subtitle: string
   paragraph?: string
@@ -53,7 +54,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
     setImageLoaded(true)
   }
 
-  const imageSource = imageSrc && imageSrc.trim() !== ''
+  const imageSource = imageSrc 
     ? imageSrc
     : '/placeholder.svg?height=1080&width=1920'
 

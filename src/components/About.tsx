@@ -38,28 +38,28 @@ const InfoSection: React.FC<{ title: string; content: string; icon: React.ReactN
 const About: React.FC = () => {
   const sections = [
     {
-      title: "Fintech Pioneer",
-      content: "20+ years driving innovation at the intersection of finance and technology.",
+      title: "Global Finance Expert",
+      content: "25+ years driving innovation across international markets, with leadership roles in Asia, Africa, and the Americas.",
       icon: <TrendingUp className="w-6 h-6 text-gray-700" />
     },
     {
-      title: "Executive Leadership",
-      content: "C-Suite roles (CEO, CFO, CSO) in multiple successful Fintech startups.",
+      title: "Sustainable Investment",
+      content: "Leading the Global Sustainability Fund, focusing on UN innovation initiatives and sustainable development goals.",
       icon: <Award className="w-6 h-6 text-gray-700" />
     },
     {
-      title: "Global Impact",
-      content: "Led transformative Fintech projects across North America, Europe, and Asia.",
-      icon: <Globe2 className="w-6 h-6 text-gray-700" />
-    },
-    {
-      title: "Thought Leadership",
-      content: "Regular speaker at global Fintech conferences and active board member.",
+      title: "Strategic Leadership",
+      content: "Multiple C-Suite roles including CFO and CSO positions, successfully leading companies through public listings and M&A.",
       icon: <Users className="w-6 h-6 text-gray-700" />
     },
     {
-      title: "Education",
-      content: "MBA in Finance, BSc in Computer Science - Bridging technology with financial acumen.",
+      title: "Technology Innovation",
+      content: "Pioneering fintech solutions and digital securities, bridging traditional finance with emerging technologies.",
+      icon: <Globe2 className="w-6 h-6 text-gray-700" />
+    },
+    {
+      title: "Capital Markets",
+      content: "Extensive experience in public listings, having led multiple TSX-V listings and international market expansions.",
       icon: <GraduationCap className="w-6 h-6 text-gray-700" />
     }
   ]
@@ -82,11 +82,8 @@ const About: React.FC = () => {
           </h2>
           <motion.p 
             className="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Delivering exceptional value through strategic innovation and proven expertise in institutional finance and technology.
+            Combining institutional finance expertise with sustainable innovation to drive global market transformation.
           </motion.p>
         </motion.div>
 
@@ -117,13 +114,13 @@ const About: React.FC = () => {
               </p>
             </div>
 
-            {/* Quick Stats - More refined styling */}
+            {/* Quick Stats - Updated based on david.md */}
             <div className="grid grid-cols-2 gap-6">
               {[
-                { value: "20+", label: "Years of Excellence" },
-                { value: "$500M+", label: "Capital Deployed" },
-                { value: "5", label: "Strategic Exits" },
-                { value: "30+", label: "Global Markets" }
+                { value: "25+", label: "Years Experience" },
+                { value: "5", label: "Continents" },
+                { value: "10+", label: "Public Listings" },
+                { value: "$1B+", label: "Capital Raised" }
               ].map((stat, index) => (
                 <motion.div 
                   key={index}
