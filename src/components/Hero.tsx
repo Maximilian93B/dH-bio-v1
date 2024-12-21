@@ -40,102 +40,88 @@ const TypewriterEffect: React.FC<{ items: string[], interval: number }> = ({ ite
   );
 };
 
-//  GridBackground Component
-const GridBackground: React.FC = () => {
+//  MinimalBars Component
+const MinimalBars: React.FC = () => {
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden">
-      <div className="absolute inset-0 w-full h-full grid grid-cols-[repeat(auto-fill,minmax(15px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(25px,1fr))] grid-rows-[repeat(auto-fill,minmax(15px,1fr))] sm:grid-rows-[repeat(auto-fill,minmax(25px,1fr))]">
-        {Array.from({ length: 4000 }).map((_, index) => (
-          <div
-            key={index}
-            className="border border-black/5"
-            style={{
-              boxShadow: 'inset 0 0 1px rgba(0, 0, 0, 0.05)',
-            }}
-          />
-        ))}
-      </div>
-      
-      {/* Enhanced MinimalBars with responsive bar count */}
-      <div className="absolute bottom-0 left-0 right-0 h-72 opacity-[0.25]">
-        <div className="flex items-end h-full gap-[2px] sm:gap-[2px]">
-          {Array.from({ length: 40 }).map((_, i) => {
-            const gradientClass = i % 3 === 0 
-              ? "bg-gradient-to-t from-emerald-500 to-emerald-300"
-              : i % 3 === 1
-              ? "bg-gradient-to-t from-blue-500 to-blue-300"
-              : "bg-gradient-to-t from-teal-500 to-teal-300";
-            
-            return (
-              <motion.div
-                key={i}
-                className={`hidden sm:block flex-1 ${gradientClass}`}
-                initial={{ height: '20%' }}
-                animate={{ 
-                  height: `${20 + Math.random() * 60}%`,
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{
-                  height: {
-                    duration: 3 + Math.random() * 2,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                    delay: i * 0.05,
-                  },
-                  opacity: {
-                    duration: 4 + Math.random() * 2,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                    delay: i * 0.05,
-                  }
-                }}
-              />
-            );
-          })}
+    <div className="absolute bottom-0 left-0 right-0 h-72 opacity-[0.35]">
+      <div className="flex items-end h-full gap-[2px] sm:gap-[2px]">
+        {Array.from({ length: 40 }).map((_, i) => {
+          const gradientClass = i % 3 === 0 
+            ? "bg-gradient-to-t from-emerald-500 via-emerald-400 to-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.35)]"
+            : i % 3 === 1
+            ? "bg-gradient-to-t from-blue-500 via-blue-400 to-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.35)]"
+            : "bg-gradient-to-t from-teal-500 via-teal-400 to-teal-300 shadow-[0_0_15px_rgba(20,184,166,0.35)]";
           
-          {/* Mobile bars (fewer bars for better spacing) */}
-          {Array.from({ length: 20 }).map((_, i) => {
-            const gradientClass = i % 3 === 0 
-              ? "bg-gradient-to-t from-emerald-500 to-emerald-300"
-              : i % 3 === 1
-              ? "bg-gradient-to-t from-blue-500 to-blue-300"
-              : "bg-gradient-to-t from-teal-500 to-teal-300";
-            
-            return (
-              <motion.div
-                key={i}
-                className={`block sm:hidden flex-1 ${gradientClass}`}
-                initial={{ height: '20%' }}
-                animate={{ 
-                  height: `${20 + Math.random() * 60}%`,
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{
-                  height: {
-                    duration: 3 + Math.random() * 2,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                    delay: i * 0.05,
-                  },
-                  opacity: {
-                    duration: 4 + Math.random() * 2,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                    delay: i * 0.05,
-                  }
-                }}
-              />
-            );
-          })}
-        </div>
+          return (
+            <motion.div
+              key={i}
+              className={`hidden sm:block flex-1 ${gradientClass}`}
+              initial={{ height: '20%' }}
+              animate={{ 
+                height: `${20 + Math.random() * 60}%`,
+                opacity: [0.7, 1, 0.7]
+              }}
+              transition={{
+                height: {
+                  duration: 2 + Math.random() * 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                  delay: i * 0.05,
+                },
+                opacity: {
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                  delay: i * 0.05,
+                }
+              }}
+            />
+          );
+        })}
+        
+        {/* Mobile bars with enhanced gradients */}
+        {Array.from({ length: 20 }).map((_, i) => {
+          const gradientClass = i % 3 === 0 
+            ? "bg-gradient-to-t from-emerald-500 via-emerald-400 to-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.35)]"
+            : i % 3 === 1
+            ? "bg-gradient-to-t from-blue-500 via-blue-400 to-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.35)]"
+            : "bg-gradient-to-t from-teal-500 via-teal-400 to-teal-300 shadow-[0_0_15px_rgba(20,184,166,0.35)]";
+          
+          return (
+            <motion.div
+              key={i}
+              className={`block sm:hidden flex-1 ${gradientClass}`}
+              initial={{ height: '20%' }}
+              animate={{ 
+                height: `${20 + Math.random() * 60}%`,
+                opacity: [0.7, 1, 0.7]
+              }}
+              transition={{
+                height: {
+                  duration: 2 + Math.random() * 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                  delay: i * 0.05,
+                },
+                opacity: {
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                  delay: i * 0.05,
+                }
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   )
 }
+
 // Main Hero Component
 const Hero: React.FC = () => {
   const titles = [
@@ -164,15 +150,19 @@ const Hero: React.FC = () => {
   ]
 
   return (
-    <section ref={containerRef} className="bg-white text-black min-h-screen flex items-center relative overflow-hidden">
-      <GridBackground />
-      <div className="absolute inset-0 bg-black/10" />
+    <section ref={containerRef} className="relative py-24 bg-gradient-to-b from-white/90 to-neutral-50/70 min-h-screen flex items-center overflow-hidden">
+      <MinimalBars />
       
+      {/* Reduce opacity of gradient overlays to make grid more visible */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-white/30 to-transparent pointer-events-none" />
+      
+      {/* Floating orbs with reduced opacity */}
       <motion.div
-        className="absolute top-20 left-20 w-20 h-20 rounded-full bg-black/20 blur-xl"
+        className="absolute top-20 left-20 w-20 h-20 rounded-full bg-black/10 blur-xl"
         animate={{
           y: [0, 20, 0],
-          opacity: [0.5, 0.8, 0.5],
+          opacity: [0.3, 0.5, 0.3],
         }}
         transition={{
           duration: 5,
@@ -181,10 +171,10 @@ const Hero: React.FC = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-40 right-40 w-32 h-32 rounded-full bg-black/10 blur-2xl"
+        className="absolute bottom-40 right-40 w-32 h-32 rounded-full bg-black/5 blur-2xl"
         animate={{
           y: [0, -30, 0],
-          opacity: [0.3, 0.6, 0.3],
+          opacity: [0.2, 0.4, 0.2],
         }}
         transition={{
           duration: 7,
@@ -291,6 +281,10 @@ const Hero: React.FC = () => {
           </motion.div>
         </div>
       </motion.div>
+      
+      {/* Add matching decorative elements at bottom */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
     </section>
   )
 }
