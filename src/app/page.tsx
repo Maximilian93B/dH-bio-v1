@@ -8,7 +8,7 @@ import Timeline from '@/components/Timeline'
 import FullScreenSection from '@/components/ImageComponent'
 import David_main from '../../public/Dave_Bio.jpg'
 import AboutSection from '@/components/About'
-import GlobalImpactHighlight from '@/components/GlobalImpact'
+import MediaRecognition from '@/components/MediaPec'
 import Footer from '@/components/Footer'
 import FeaturedArticles from '@/components/FeaturedArticles'
 import Script from 'next/script'
@@ -111,6 +111,10 @@ export default function Home() {
         <Hero />
         
         <ViewportSection>
+          <MediaRecognition />
+        </ViewportSection>
+
+        <ViewportSection>
           <FullScreenSection 
             imageSrc={img} 
             title="About" 
@@ -131,9 +135,6 @@ export default function Home() {
           <Specialties />
         </ViewportSection>
 
-        <ViewportSection>
-          <GlobalImpactHighlight />
-        </ViewportSection>
 
         <ViewportSection>
           <Timeline />
