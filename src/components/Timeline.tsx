@@ -126,13 +126,16 @@ const Timeline: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="hidden lg:block lg:w-1/3">
-            <div className="sticky top-32">
-              <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-sm border border-neutral-200">
+           {/* Updated image container with centering */}
+           <div className="hidden lg:block lg:w-1/3">
+            <div className="sticky top-32 flex items-center justify-center h-full">
+              <div className="relative aspect-[3/4] w-full max-w-md rounded-lg overflow-hidden shadow-sm border border-neutral-200">
                 <Image
-                  src="/Dave_About.jpeg"
+                  src="/David_Tech.jpg"
                   alt="David Hanegraaf"
                   fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   style={{ objectFit: "cover" }}
                   className="rounded-lg"
                 />
