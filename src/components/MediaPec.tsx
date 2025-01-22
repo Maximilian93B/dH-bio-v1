@@ -7,7 +7,7 @@ import { Award, ArrowUpRight } from 'lucide-react'
 
 export default function MediaRecognition() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-neutral-50/70 to-white relative overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
           {/* Text Content - Improved mobile spacing */}

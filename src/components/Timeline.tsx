@@ -30,9 +30,6 @@ const Timeline: React.FC = () => {
 
   return (
     <section ref={ref} className="py-16 md:py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-white/50 to-transparent pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Award, GraduationCap, Globe2, Users, TrendingUp, ArrowRight } from 'lucide-react'
+import { Award, GraduationCap, Globe2, Users, TrendingUp } from 'lucide-react'
 
 
 const InfoSection: React.FC<{ title: string; content: string; icon: React.ReactNode; index: number }> = ({ 
@@ -67,12 +67,6 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
-      {/* Enhanced background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
-      
-      {/* Subtle radial gradient for depth */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-white/50 to-transparent pointer-events-none" />
-
       {/* Content container with increased relative z-index */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
@@ -154,25 +148,6 @@ const About: React.FC = () => {
             ))}
           </div>
         </div>
-
-        {/* Removed decorative borders and simplified scroll arrow */}
-        <motion.div 
-          className="mt-16 md:mt-20 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <a 
-            href="#specialties" 
-            className="inline-block p-4 text-neutral-600 hover:text-neutral-900 transition-colors duration-300"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('specialties')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            <ArrowRight className="w-6 h-6 rotate-90" />
-          </a>
-        </motion.div>
       </div>
     </section>
   )
