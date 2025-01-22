@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform} from 'framer-motion'
-import { Linkedin, Mail, ArrowRight } from 'lucide-react'
+import { Linkedin, Mail, Instagram } from 'lucide-react'
 
 // TypewriterEffect Component
 const TypewriterEffect: React.FC<{ items: string[], interval: number }> = ({ items }) => {
@@ -146,6 +146,11 @@ const Hero: React.FC = () => {
       icon: <Mail className="w-6 h-6" />, 
       href: "mailto:david@hanegraaf.com",
       label: "Email"
+    },
+    { 
+      icon: <Instagram className="w-6 h-6" />, 
+      href: "https://www.instagram.com/dave_hanegraaf999/profilecard/?igsh=NGxtMGYxYnBmZTNy",
+      label: "Instagram"
     }
   ]
 
@@ -222,7 +227,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex justify-center gap-6 mt-8 mb-12"
+            className="flex justify-center gap-6 mt-8"
           >
             {socialLinks.map((link, index) => (
               <motion.a
@@ -241,43 +246,6 @@ const Hero: React.FC = () => {
                 {link.icon}
               </motion.a>
             ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className="mt-10"
-          >
-            <motion.a
-              href="#about"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#about')?.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start'
-                });
-              }}
-              className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-medium rounded-lg text-white bg-black overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="relative z-10 flex items-center">
-                Learn More
-                <motion.span
-                  className="ml-2"
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <ArrowRight className="w-5 h-5" />
-                </motion.span>
-              </span>
-              <div className="absolute inset-0 w-full h-full bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.a>
           </motion.div>
         </div>
       </motion.div>

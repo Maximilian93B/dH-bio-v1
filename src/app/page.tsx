@@ -3,10 +3,9 @@
 import React, { useRef } from 'react'
 import { useInView } from 'framer-motion' // We'll just use useInView for triggering
 import Hero from '@/components/Hero'
-import Specialties from '@/components/Specialities'
 import Timeline from '@/components/Timeline'
 import FullScreenSection from '@/components/ImageComponent'
-import David_main from '../../public/Dave_Bio.jpg'
+import David_main from '../../public/PHOTO-2025-01-16-15-23-45.jpg'
 import AboutSection from '@/components/About'
 import MediaRecognition from '@/components/MediaPec'
 import Footer from '@/components/Footer'
@@ -45,7 +44,7 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({ children }) => {
   )
 }
 
-// Grid Background Component
+// Grid Background Component with more visible lines
 const GridBackground: React.FC = () => {
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none">
@@ -53,9 +52,9 @@ const GridBackground: React.FC = () => {
         {Array.from({ length: 10000 }).map((_, index) => (
           <div
             key={index}
-            className="border border-black/[0.03] dark:border-white/[0.03]"
+            className="border border-black/[0.15] dark:border-white/[0.15]"
             style={{
-              boxShadow: 'inset 0 0 1px rgba(0, 0, 0, 0.03)',
+              boxShadow: 'inset 0 0 1px rgba(0, 0, 0, 0.15)',
             }}
           />
         ))}
@@ -131,9 +130,6 @@ export default function Home() {
           <FeaturedArticles />
         </ViewportSection>
 
-        <ViewportSection>
-          <Specialties />
-        </ViewportSection>
 
 
         <ViewportSection>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUp, Linkedin, Mail, FileText } from 'lucide-react'
+import { ArrowUp, Linkedin, Mail, Instagram } from 'lucide-react'
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -21,9 +21,9 @@ const Footer: React.FC = () => {
       icon: <Mail className="w-5 h-5" />,
     },
     {
-      name: 'Resume',
-      href: '/david-hanegraaf-resume.pdf',
-      icon: <FileText className="w-5 h-5" />,
+      name: 'Instagram',
+      href: 'https://www.instagram.com/dave_hanegraaf999/profilecard/?igsh=NGxtMGYxYnBmZTNy',
+      icon: <Instagram className="w-5 h-5" />,
     },
   ]
 

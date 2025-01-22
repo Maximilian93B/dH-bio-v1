@@ -66,7 +66,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
     >
       {/* Text Content */}
       <motion.div
-        className="flex-1 flex flex-col justify-center p-6 md:p-12 lg:p-16 relative z-10 bg-white"
+        className="flex-1 flex flex-col justify-center p-6 md:p-12 lg:p-16 relative z-10 bg-white/90"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
@@ -171,7 +171,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
         )}
 
         {/* Image overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10 pointer-events-none" />
       </motion.div>
 
       {/* Global decorative elements */}
