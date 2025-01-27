@@ -29,7 +29,10 @@ const Timeline: React.FC = () => {
   }, [controls, inView])
 
   return (
-    <section ref={ref} className="py-16 md:py-24 relative overflow-hidden">
+    <section 
+      ref={ref} 
+      className="py-16 md:py-24 relative overflow-hidden bg-white/90 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.05)] border-y border-black/[0.07]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
