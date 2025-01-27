@@ -21,7 +21,7 @@ export default function MediaRecognition() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-black/5 px-3 py-1.5 rounded-full text-sm text-black/70"
+              className="inline-flex items-center gap-2 bg-black/5 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm text-black/70"
             >
               <Award className="w-4 h-4" />
               <span>Industry Recognition</span>
@@ -115,10 +115,6 @@ export default function MediaRecognition() {
           </motion.div>
         </div>
       </div>
-
-      {/* Decorative borders */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
     </section>
   )
 }
