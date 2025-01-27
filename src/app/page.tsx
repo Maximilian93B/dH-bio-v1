@@ -44,17 +44,23 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({ children }) => {
   )
 }
 
-// Grid Background Component with more visible lines
+// Subtle Grid Background Component
 const GridBackground: React.FC = () => {
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none">
-      <div className="absolute inset-0 w-full h-full grid grid-cols-[repeat(auto-fill,minmax(15px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(25px,1fr))] grid-rows-[repeat(auto-fill,minmax(15px,1fr))] sm:grid-rows-[repeat(auto-fill,minmax(25px,1fr))]">
-        {Array.from({ length: 10000 }).map((_, index) => (
+      <div className="absolute inset-0 w-full h-full 
+        grid 
+        grid-cols-[repeat(auto-fill,minmax(30px,1fr))] 
+        sm:grid-cols-[repeat(auto-fill,minmax(40px,1fr))] 
+        grid-rows-[repeat(auto-fill,minmax(30px,1fr))] 
+        sm:grid-rows-[repeat(auto-fill,minmax(40px,1fr))]"
+      >
+        {Array.from({ length: 1000 }).map((_, index) => (
           <div
             key={index}
-            className="border border-black/[0.15] dark:border-white/[0.15]"
+            className="border border-black/[0.07] dark:border-white/[0.07]"
             style={{
-              boxShadow: 'inset 0 0 1px rgba(0, 0, 0, 0.15)',
+              boxShadow: 'inset 0 0 1px rgba(0, 0, 0, 0.05)',
             }}
           />
         ))}

@@ -96,10 +96,6 @@ const FeaturedArticles: React.FC<{ isInView?: boolean }> = ({ isInView }) => {
           ))}
         </div>
       </div>
-
-      {/* Optional: Subtle animated gradient lines */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/10 to-transparent" />
     </section>
   )
 }

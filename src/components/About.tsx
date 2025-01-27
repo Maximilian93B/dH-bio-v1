@@ -17,7 +17,7 @@ const InfoSection: React.FC<{ title: string; content: string; icon: React.ReactN
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
-      className="group p-6 md:p-8 bg-white border border-neutral-200 rounded-lg hover:border-neutral-300 transition-all duration-300"
+      className="group p-6 md:p-8 bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-lg hover:border-neutral-300 transition-all duration-300"
     >
       <div className="flex items-start gap-4">
         <div className="mt-1 p-3 bg-white rounded-lg group-hover:bg-neutral-200 transition-colors duration-300">
@@ -67,7 +67,7 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
-      {/* Content container with increased relative z-index */}
+      {/* Remove any background colors/gradients that might block the grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <motion.div 
