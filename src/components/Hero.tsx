@@ -154,19 +154,18 @@ const Hero: React.FC = () => {
   ]
 
   return (
-    <section ref={containerRef} className="relative py-24 bg-gradient-to-b from-white/90 to-neutral-50/70 min-h-screen flex items-center overflow-hidden">
+    <section ref={containerRef} className="relative py-24 min-h-screen flex items-center overflow-hidden">
       <MinimalBars />
       
-      {/* Reduce opacity of gradient overlays to make grid more visible */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/30 pointer-events-none" />
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-white/30 to-transparent pointer-events-none" />
+      {/* Simplified gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/30 to-white/50 pointer-events-none" />
       
-      {/* Floating orbs with reduced opacity */}
+      {/* Updated floating orbs with better contrast */}
       <motion.div
-        className="absolute top-20 left-20 w-20 h-20 rounded-full bg-black/10 blur-xl"
+        className="absolute top-20 left-20 w-20 h-20 rounded-full bg-emerald-500/10 blur-xl"
         animate={{
           y: [0, 20, 0],
-          opacity: [0.3, 0.5, 0.3],
+          opacity: [0.2, 0.3, 0.2],
         }}
         transition={{
           duration: 5,
@@ -175,10 +174,10 @@ const Hero: React.FC = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-40 right-40 w-32 h-32 rounded-full bg-black/5 blur-2xl"
+        className="absolute bottom-40 right-40 w-32 h-32 rounded-full bg-blue-500/10 blur-2xl"
         animate={{
           y: [0, -30, 0],
-          opacity: [0.2, 0.4, 0.2],
+          opacity: [0.15, 0.25, 0.15],
         }}
         transition={{
           duration: 7,
@@ -249,9 +248,9 @@ const Hero: React.FC = () => {
         </div>
       </motion.div>
       
-      {/* Add matching decorative elements at bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
+      {/* Updated decorative elements */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
     </section>
   )
 }

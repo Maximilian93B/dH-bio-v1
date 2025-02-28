@@ -32,8 +32,10 @@ const Timeline: React.FC = () => {
   return (
     <section 
       ref={ref} 
-      className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-white/90 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.05)] border-y border-black/[0.07]"
+      className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-white/60 backdrop-blur-sm"
     >
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,7 +59,7 @@ const Timeline: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12"> 
           <div className="lg:w-2/3">
             <div className="relative">
-              <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5 bg-neutral-200"></div>
+              <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5 bg-black/[0.05]"></div>
               {timelineEvents.map((event, index) => (
                 <motion.div 
                   key={index}
@@ -83,7 +85,7 @@ const Timeline: React.FC = () => {
                   </div>
                   <div className="absolute left-6 lg:static lg:w-2/12 flex justify-start lg:justify-center">
                     <motion.div 
-                      className="w-4 h-4 bg-neutral-900 rounded-full cursor-pointer flex items-center justify-center"
+                      className="w-4 h-4 bg-black/80 hover:bg-black rounded-full cursor-pointer flex items-center justify-center"
                       whileHover={{ scale: 1.2, backgroundColor: "#404040" }}
                       onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
                     >
@@ -145,8 +147,8 @@ const Timeline: React.FC = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-neutral-200" />
-      <div className="absolute top-0 left-0 w-full h-px bg-neutral-200" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-black/[0.05]" />
+      <div className="absolute top-0 left-0 w-full h-px bg-black/[0.05]" />
     </section>
   )
 }

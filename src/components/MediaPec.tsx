@@ -8,6 +8,8 @@ import { Award, ArrowUpRight } from 'lucide-react'
 export default function MediaRecognition() {
   return (
     <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/30 pointer-events-none" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
           {/* Text Content - Improved spacing and typography */}
@@ -21,7 +23,7 @@ export default function MediaRecognition() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-black/5 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm text-black/70"
+              className="inline-flex items-center gap-2 bg-black/[0.03] backdrop-blur-[2px] px-3 py-1.5 rounded-full text-sm text-black/70"
             >
               <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span>Industry Recognition</span>
@@ -66,7 +68,7 @@ export default function MediaRecognition() {
                   whileHover={{ x: 4 }}
                   className="flex items-start gap-2 sm:gap-3 group"
                 >
-                  <div className="flex-shrink-0 p-1.5 bg-black/5 rounded group-hover:bg-black/10 transition-colors duration-300">
+                  <div className="flex-shrink-0 p-1.5 bg-black/[0.03] rounded group-hover:bg-black/[0.05] transition-colors duration-300">
                     <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black/70" />
                   </div>
                   <div>
@@ -101,16 +103,16 @@ export default function MediaRecognition() {
             transition={{ duration: 0.8 }}
             className="order-1 lg:order-2"
           >
-            <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-sm mx-auto lg:max-w-none shadow-2xl">
+            <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-sm mx-auto lg:max-w-none shadow-lg">
               <Image
                 src="/Dave_About.jpeg"
                 alt="David Hanegraaf featured in Analytics Insight Magazine"
                 fill
                 sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 45vw"
-                className="object-cover rounded-lg"
+                className="object-cover rounded-lg backdrop-blur-[2px]"
                 priority
               />
-              <div className="absolute inset-0 rounded-lg shadow-inner pointer-events-none border border-black/10" />
+              <div className="absolute inset-0 rounded-lg shadow-inner pointer-events-none border border-black/[0.05]" />
             </div>
           </motion.div>
         </div>

@@ -66,7 +66,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
     >
       {/* Text Content */}
       <motion.div
-        className="flex-1 flex flex-col justify-center p-4 sm:p-6 md:p-12 lg:p-16 relative z-10 bg-white/80 backdrop-blur-sm"
+        className="flex-1 flex flex-col justify-center p-4 sm:p-6 md:p-12 lg:p-16 relative z-10 bg-white/40 backdrop-blur-[2px]"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
@@ -74,7 +74,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
         <div className="max-w-2xl relative">
           {/* Decorative line above title */}
           <motion.div
-            className="w-20 h-1  bg-gradient-to-r from-emerald-500 to-blue-500 mb-8"
+            className="w-20 h-1 bg-gradient-to-r from-emerald-500/60 to-blue-500/60 mb-8"
             initial={{ width: 0 }}
             animate={isInView ? { width: 80 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -122,12 +122,12 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
         </div>
 
         {/* Right border gradient */}
-        <div className="absolute bottom-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-black/20 to-transparent" />
+        <div className="absolute bottom-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-black/[0.07] to-transparent" />
       </motion.div>
 
       {/* Image Section */}
       <motion.div
-        className="flex-1 relative min-h-[300px] sm:min-h-[400px] lg:min-h-screen bg-white"
+        className="flex-1 relative min-h-[300px] sm:min-h-[400px] lg:min-h-screen bg-white/30"
         initial={{ opacity: 0, scale: 1.0 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 1 }}
@@ -171,7 +171,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
         )}
 
         {/* Image overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/20 pointer-events-none" />
       </motion.div>
 
       {/* Global decorative elements */}
@@ -181,7 +181,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
         animate={isInView ? { scaleX: 1 } : {}}
         transition={{ duration: 1, delay: 0.2 }}
       >
-        <div className="h-full bg-gradient-to-r from-transparent via-black/20 to-transparent" />
+        <div className="h-full bg-gradient-to-r from-transparent via-black/[0.07] to-transparent" />
       </motion.div>
 
       <motion.div
@@ -190,7 +190,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
         animate={isInView ? { scaleX: 1 } : {}}
         transition={{ duration: 1, delay: 0.2 }}
       >
-        <div className="h-full bg-gradient-to-r from-transparent via-black/20 to-transparent" />
+        <div className="h-full bg-gradient-to-r from-transparent via-black/[0.07] to-transparent" />
       </motion.div>
     </section>
   )
