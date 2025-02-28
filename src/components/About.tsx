@@ -17,17 +17,17 @@ const InfoSection: React.FC<{ title: string; content: string; icon: React.ReactN
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
-      className="group p-6 md:p-8 bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-lg hover:border-neutral-300 transition-all duration-300"
+      className="group p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-lg hover:border-neutral-300 transition-all duration-300"
     >
-      <div className="flex items-start gap-4">
-        <div className="mt-1 p-3 bg-white rounded-lg group-hover:bg-neutral-200 transition-colors duration-300">
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div className="mt-1 p-2 sm:p-3 bg-white rounded-lg group-hover:bg-neutral-200 transition-colors duration-300">
           {icon}
         </div>
         <div>
-          <h3 className="text-lg md:text-xl font-semibold text-neutral-900 mb-2">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-neutral-900 mb-2">
             {title}
           </h3>
-          <p className="text-base md:text-lg text-neutral-600 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-neutral-600 leading-relaxed">
             {content}
           </p>
         </div>
@@ -40,12 +40,12 @@ const About: React.FC = () => {
   const sections = [
     {
       title: "Global Finance Expert",
-      content: "25+ years driving innovation across international markets, with leadership roles in Asia, Africa, and the Americas.",
+      content: "25 years driving innovation across international markets, with leadership roles in Asia, Africa, Europe and the Americas.",
       icon: <TrendingUp className="w-6 h-6 text-gray-700" />
     },
     {
       title: "Sustainable Investment",
-      content: "Leading the Global Sustainability Fund, focusing on UN innovation initiatives and sustainable development goals.",
+      content: "Leading the Global Sustainability Fund, focusing on UN innovation, the 2030 Agenda, and supporting its 17 Sustainable Development Goals.",
       icon: <Award className="w-6 h-6 text-gray-700" />
     },
     {
@@ -66,7 +66,7 @@ const About: React.FC = () => {
   ]
 
   return (
-    <section id="about" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-20 md:py-32 relative overflow-hidden">
       {/* Remove any background colors/gradients that might block the grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
@@ -82,14 +82,14 @@ const About: React.FC = () => {
           <motion.p 
             className="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto"
           >
-            Combining institutional finance expertise with sustainable innovation to drive global market transformation.
+           Combining institutional finance expertise with sustainable innovation to drive global market transformation.
           </motion.p>
         </motion.div>
 
         {/* Profile Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
           <motion.div 
-            className="lg:col-span-4 space-y-8"
+            className="lg:col-span-4 space-y-4 sm:space-y-8"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -118,7 +118,7 @@ const About: React.FC = () => {
               {[
                 { value: "25+", label: "Years Experience" },
                 { value: "5", label: "Continents" },
-                { value: "10+", label: "Public Listings" },
+                { value: "5+", label: "Public Listings" },
                 { value: "$1B+", label: "Capital Raised" }
               ].map((stat, index) => (
                 <motion.div 

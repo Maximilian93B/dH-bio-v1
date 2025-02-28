@@ -29,11 +29,11 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({ children }) => {
   const ref = useRef(null)
   const isInView = useInView(ref, {
     once: true,
-    margin: "-100px"
+    margin: "-50px 0px"
   })
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="w-full px-4 md:px-6 lg:px-8">
       {React.Children.map(children, child => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, { isInView } as WithIsInView)
@@ -44,30 +44,50 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({ children }) => {
   )
 }
 
-// Subtle Grid Background Component
+// Update the GridBackground component for better mobile performance
 const GridBackground: React.FC = () => {
+  const [gridItems, setGridItems] = React.useState(500);
+
+  React.useEffect(() => {
+    // Update grid items based on window width
+    const updateGridItems = () => {
+      setGridItems(window.innerWidth > 768 ? 1000 : 500);
+    };
+
+    // Set initial value
+    updateGridItems();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', updateGridItems);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', updateGridItems);
+  }, []);
+
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none">
       <div className="absolute inset-0 w-full h-full 
         grid 
-        grid-cols-[repeat(auto-fill,minmax(30px,1fr))] 
-        sm:grid-cols-[repeat(auto-fill,minmax(40px,1fr))] 
-        grid-rows-[repeat(auto-fill,minmax(30px,1fr))] 
-        sm:grid-rows-[repeat(auto-fill,minmax(40px,1fr))]"
+        grid-cols-[repeat(auto-fill,minmax(20px,1fr))] 
+        md:grid-cols-[repeat(auto-fill,minmax(30px,1fr))] 
+        lg:grid-cols-[repeat(auto-fill,minmax(40px,1fr))] 
+        grid-rows-[repeat(auto-fill,minmax(20px,1fr))] 
+        md:grid-rows-[repeat(auto-fill,minmax(30px,1fr))]
+        lg:grid-rows-[repeat(auto-fill,minmax(40px,1fr))]"
       >
-        {Array.from({ length: 1000 }).map((_, index) => (
+        {Array.from({ length: gridItems }).map((_, index) => (
           <div
             key={index}
-            className="border border-black/[0.07] dark:border-white/[0.07]"
+            className="border border-black/[0.1] dark:border-white/[0.1]"
             style={{
-              boxShadow: 'inset 0 0 1px rgba(0, 0, 0, 0.05)',
+              boxShadow: 'inset 0 0 2px rgba(0, 0, 0, 0.05)',
             }}
           />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 // Add JSON-LD Schema
 const PersonSchema = {
@@ -109,7 +129,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PersonSchema) }}
       />
       
-      <main className="min-h-screen bg-white relative flex flex-col">
+      <main className="min-h-screen bg-white relative flex flex-col overflow-x-hidden">
         {/* Single grid background for entire page */}
         <GridBackground />
         
@@ -135,8 +155,6 @@ export default function Home() {
         <ViewportSection>
           <FeaturedArticles />
         </ViewportSection>
-
-
 
         <ViewportSection>
           <Timeline />
