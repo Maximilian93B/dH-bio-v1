@@ -125,11 +125,10 @@ const MinimalBars: React.FC = () => {
 // Main Hero Component
 const Hero: React.FC = () => {
   const titles = [
+    "Principal",
+    "CFO",
     "Global Finance Expert",
-    "Principal & CFO",
     "Sustainability Leader",
-    "Technology Pioneer",
-    "Strategic Advisor"
   ]
   
   const containerRef = useRef<HTMLDivElement>(null)
@@ -220,7 +219,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="mt-6 max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-black leading-relaxed"
           >
-            Senior financial executive with 25+ years of experience in global markets, sustainable investments, and technology innovation. Currently leading the Global Sustainability Fund, advancing UN innovation initiatives.
+           "Senior financial executive with 25+ years of experience in global markets, sustainability investments, and technology innovation.
           </motion.p>
 
           <motion.div

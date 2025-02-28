@@ -6,14 +6,15 @@ import Image from 'next/image'
 
 const timelineEvents = [
   { year: 2022, event: "Featured in Marquis Who's Who", details: "Recognized for outstanding contributions to the tech industry and business leadership." },
-  { year: 2021, event: "Named one of the 10 Most Influential Tech Leaders", details: "Honored by Analytics Insights Magazine for innovative approaches in fintech." },
-  { year: 2021, event: "Recognized in Top 100 People in Finance Magazine", details: "Acknowledged for pioneering work in financial technology and corporate strategy." },
-  { year: 2020, event: "Led successful IPO for tech startup", details: "Guided a cutting-edge AI company through a $500M initial public offering." },
-  { year: 2018, event: "Launched renewable energy venture", details: "Co-founded a solar energy startup, securing $50M in Series A funding." },
-  { year: 2015, event: "Appointed as CEO of major fintech company", details: "Took the helm of a leading financial technology firm, driving 300% growth in 3 years." },
-  { year: 2010, event: "Began serving on multiple corporate boards", details: "Started advisory roles for tech startups and established corporations." },
-  { year: 2005, event: "Completed MBA", details: "Graduated with distinction, focusing on international business and technology management." },
-  { year: 2000, event: "Started first tech company", details: "Founded a software development firm specializing in e-commerce solutions." }
+  { year: 2021, event: "Named Analytics Insights Magazine's Top 10 Most Influential Tech Leaders", details: "Honored by Analytics Insights Magazine for innovative approaches in fintech." },
+  { year: 2021, event: "Recognized in Top 100 People in Finance Magazine", details: "Acknowledged for pioneering work in financial technology and capital markets." },
+  { year: 2021, event: "Led Major Digital Securities Public Listing in the US", details: "Led the successful public listing of a major digital securities offering in the US." },
+  { year: 2020, event: "Led successful IPO for tech startup", details: "Guided a cutting-edge blockchain company through a $100M initial public offering on a digital securities exchange." },
+  { year: 2018, event: "Took a Year Off to Enjoy Life", details: "Mini-retirement, loved it!"},
+  { year: 2015, event: "Founded Boutique Venture Capital Firm With Former CTO of Acer Group", details: "Principal and CEO of Hong Kong based venture capital advisory firm that sourced innovative technologies globally and partnered them with Taiwanese ODMs" },
+  { year: 2011, event: "Began Serving on Multiple C-Suite Teams and Corporate Boards", details: "Acting and interim roles as CFO, CEO, COO, board seats, and advisory roles for tech startups, SMEs, and public companies." },
+  { year: 2009, event: "Completed MBA", details: "Graduated top 5% of 250 student MBA cohort from HEC Montreal, voted by Forbes as a top-10 MBA program outside the US" },
+  { year: 2006, event: "First IPO", details: "Over 5 year span helped build the second largest aquaculture and seafood company in the world which listed with a $1.2B valuation via IPO on the Oslo-Boors Stock Exchange." }
 ]
 
 const Timeline: React.FC = () => {
@@ -31,7 +32,7 @@ const Timeline: React.FC = () => {
   return (
     <section 
       ref={ref} 
-      className="py-16 md:py-24 relative overflow-hidden bg-white/90 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.05)] border-y border-black/[0.07]"
+      className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-white/90 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.05)] border-y border-black/[0.07]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -53,7 +54,7 @@ const Timeline: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12"> 
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-12"> 
           <div className="lg:w-2/3">
             <div className="relative">
               <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5 bg-neutral-200"></div>
@@ -75,7 +76,7 @@ const Timeline: React.FC = () => {
                   custom={index}
                   initial="hidden"
                   animate={controls}
-                  className="mb-6 md:mb-8 flex flex-col lg:flex-row items-start lg:items-center w-full pl-16 lg:pl-0"
+                  className="mb-4 sm:mb-6 md:mb-8 flex flex-col lg:flex-row items-start lg:items-center w-full pl-12 sm:pl-16 lg:pl-0"
                 >
                   <div className="lg:w-5/12 lg:text-right pr-8 mb-2 lg:mb-0">
                     <h3 className="text-lg md:text-xl font-bold text-neutral-900">{event.year}</h3>
@@ -106,7 +107,7 @@ const Timeline: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <p className="text-base md:text-lg font-semibold text-neutral-900 mb-2">{event.event}</p>
+                      <p className="text-sm sm:text-base md:text-lg font-semibold text-neutral-900 mb-2">{event.event}</p>
                       <AnimatePresence>
                         {expandedIndex === index && (
                           <motion.p
@@ -126,18 +127,17 @@ const Timeline: React.FC = () => {
               ))}
             </div>
           </div>
-           {/* Updated image container with centering */}
-           <div className="hidden lg:block lg:w-1/3">
+          
+          <div className="lg:w-1/3">
             <div className="sticky top-32 flex items-center justify-center h-full">
-              <div className="relative aspect-[3/4] w-full max-w-md rounded-lg overflow-hidden shadow-sm border border-neutral-200">
+              <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-md rounded-lg overflow-hidden">
                 <Image
                   src="/David_Tech.jpg"
                   alt="David Hanegraaf"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  style={{ objectFit: "cover" }}
-                  className="rounded-lg"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="rounded-lg object-cover"
                 />
               </div>
             </div>
