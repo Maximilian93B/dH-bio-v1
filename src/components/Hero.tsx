@@ -219,7 +219,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="mt-6 max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-black leading-relaxed"
           >
-           "Senior financial executive with 25+ years of experience in global markets, sustainability investments, and technology innovation.
+          Senior financial executive with 25+ years of experience in global markets, sustainability investments, and technology innovation.
           </motion.p>
 
           <motion.div
