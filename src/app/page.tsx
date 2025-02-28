@@ -73,14 +73,15 @@ const GridBackground: React.FC = () => {
         lg:grid-cols-[repeat(auto-fill,minmax(40px,1fr))] 
         grid-rows-[repeat(auto-fill,minmax(20px,1fr))] 
         md:grid-rows-[repeat(auto-fill,minmax(30px,1fr))]
-        lg:grid-rows-[repeat(auto-fill,minmax(40px,1fr))]"
+        lg:grid-rows-[repeat(auto-fill,minmax(40px,1fr))]
+        opacity-[0.4]"
       >
         {Array.from({ length: gridItems }).map((_, index) => (
           <div
             key={index}
-            className="border border-black/[0.1] dark:border-white/[0.1]"
+            className="border border-black/[0.05] dark:border-white/[0.05]"
             style={{
-              boxShadow: 'inset 0 0 2px rgba(0, 0, 0, 0.05)',
+              boxShadow: 'inset 0 0 1px rgba(0, 0, 0, 0.03)',
             }}
           />
         ))}
