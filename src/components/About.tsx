@@ -82,7 +82,7 @@ const About: React.FC = () => {
           <motion.p 
             className="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto"
           >
-           Combining institutional finance expertise with sustainable innovation to drive global market transformation.
+          Combining diverse finance expertise with sustainable innovation to drive global market transformation.
           </motion.p>
         </motion.div>
 

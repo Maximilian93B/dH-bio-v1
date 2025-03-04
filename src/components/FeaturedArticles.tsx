@@ -13,6 +13,21 @@ interface Article {
 }
 
 const articles: Article[] = [
+
+  {
+    title: "UN Women Entrepreneurship EXPO Speaker Profile",
+    publication: "UN Women",
+    date: "2024",
+    url: "https://www.unwomenexpo.org/speaker/david-hanegraaf",
+    description: "Featured speaker profile highlighting David's role in sustainable technology and collaboration with United Nations agencies."
+  },
+  {
+    title: "David E. Hanegraaf Inducted into Marquis Who's Who",
+    publication: "Marquis Who's Who",
+    date: "2022",
+    url: "https://www.24-7pressrelease.com/press-release/495757/david-e-hanegraaf-mba-has-been-inducted-into-the-prestigious-marquis-whos-who-biographical-registry",
+    description: "Recognition of over 20 years of excellence in finance, venture capital, and sustainable technology development."
+  },  
   {
     title: "The 10 Most Influential Tech Leaders of 2021",
     publication: "Analytics Insight Magazine",
@@ -28,18 +43,11 @@ const articles: Article[] = [
     description: "Profile featuring David's work in sustainable investments, digital securities, and his leadership roles across global markets including TheXchange and Global Sustainability Fund."
   },
   {
-    title: "David E. Hanegraaf Inducted into Marquis Who's Who",
-    publication: "Marquis Who's Who",
-    date: "2022",
-    url: "https://www.24-7pressrelease.com/press-release/495757/david-e-hanegraaf-mba-has-been-inducted-into-the-prestigious-marquis-whos-who-biographical-registry",
-    description: "Recognition of over 20 years of excellence in finance, venture capital, and sustainable technology development."
-  },
-  {
-    title: "UN Women Entrepreneurship EXPO Speaker Profile",
-    publication: "UN Women",
-    date: "2024",
-    url: "https://www.unwomenexpo.org/speaker/david-hanegraaf",
-    description: "Featured speaker profile highlighting David's role in sustainable technology and collaboration with United Nations agencies."
+    title: "Guest Speaker and Technology adjudicator at UNOPS Dadlihack 3.0",
+    publication: "UNOPS Dadlihack 3.0",
+    date: "2020",
+    url: "https://www.thetop100magazine.com/david-hanegraaf",
+    description: "David was a guest speaker and judge at UNOPS Dadlihack 3.0 along side UN, Sony and MIT representatives during the competition in Antigua and Barbuda."
   },
 ]
 const FeaturedArticles: React.FC<{ isInView?: boolean }> = ({ isInView }) => {

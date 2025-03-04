@@ -6,13 +6,13 @@ import Image from 'next/image'
 
 const timelineEvents = [
   { year: 2022, event: "Featured in Marquis Who's Who", details: "Recognized for outstanding contributions to the tech industry and business leadership." },
-  { year: 2021, event: "Named Analytics Insights Magazine's Top 10 Most Influential Tech Leaders", details: "Honored by Analytics Insights Magazine for innovative approaches in fintech." },
-  { year: 2021, event: "Recognized in Top 100 People in Finance Magazine", details: "Acknowledged for pioneering work in financial technology and capital markets." },
+  { year: 2021, event: "Named Analytics Insights Magazine's Top 10 Most Influential Tech Leaders", details: "Honored by Analytics Insights Magazine for innovative approaches in digital securities and blockchain." },
+  { year: 2021, event: "Recognized in Top 100 People in Finance Magazine", details: "Acknowledged for pioneering work in financial technology and capital markets. " },
   { year: 2021, event: "Led Major Digital Securities Public Listing in the US", details: "Led the successful public listing of a major digital securities offering in the US." },
   { year: 2020, event: "Led successful IPO for tech startup", details: "Guided a cutting-edge blockchain company through a $100M initial public offering on a digital securities exchange." },
   { year: 2018, event: "Took a Year Off to Enjoy Life", details: "Mini-retirement, loved it!"},
-  { year: 2015, event: "Founded Boutique Venture Capital Firm With Former CTO of Acer Group", details: "Principal and CEO of Hong Kong based venture capital advisory firm that sourced innovative technologies globally and partnered them with Taiwanese ODMs" },
-  { year: 2011, event: "Began Serving on Multiple C-Suite Teams and Corporate Boards", details: "Acting and interim roles as CFO, CEO, COO, board seats, and advisory roles for tech startups, SMEs, and public companies." },
+  { year: 2015, event: "Founded Boutique VC Firm With Former CTO of Acer Group", details: "Principal and CEO of Hong Kong based venture capital advisory firm that sourced innovative technologies globally and partnered them with Taiwanese ODMs." },
+  { year: 2011, event: "Began Serving on Multiple C-Suite Teams and Corporate Boards", details: "Acting and interim roles as CEO, CFO, COO, board seats, and senior advisory roles for tech startups, SMEs, and public companies." },
   { year: 2009, event: "Completed MBA", details: "Graduated top 5% of 250 student MBA cohort from HEC Montreal, voted by Forbes as a top-10 MBA program outside the US" },
   { year: 2006, event: "First IPO", details: "Over 5 year span helped build the second largest aquaculture and seafood company in the world which listed with a $1.2B valuation via IPO on the Oslo-Boors Stock Exchange." }
 ]
@@ -32,7 +32,7 @@ const Timeline: React.FC = () => {
   return (
     <section 
       ref={ref} 
-      className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-white/60 backdrop-blur-sm"
+      className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-white/60 backdrop-blur-sm z-10"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
       
