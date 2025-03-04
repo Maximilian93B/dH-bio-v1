@@ -12,12 +12,12 @@ const Footer: React.FC = () => {
   const socialLinks = [
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/in/davidhanegraaf',
+      href: 'https://linkedin.com/in/david-hanegraaf',
       icon: <Linkedin className="w-5 h-5" />,
     },
     {
       name: 'Email',
-      href: 'mailto:david@hanegraaf.com',
+      href: 'mailto:david.hanegraaf@hec.ca',
       icon: <Mail className="w-5 h-5" />,
     },
     {

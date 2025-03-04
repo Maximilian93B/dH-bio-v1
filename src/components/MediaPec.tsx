@@ -7,7 +7,7 @@ import { Award, ArrowUpRight } from 'lucide-react'
 
 export default function MediaRecognition() {
   return (
-    <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-white/50 backdrop-blur-sm z-10">
       <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/30 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -44,7 +44,7 @@ export default function MediaRecognition() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-sm sm:text-base md:text-lg text-black/70 leading-relaxed"
             >
-             Recognized by Analytics Insight magazine for pioneering innovation in capital markets and innovative technologies. Featured for leadership in bridging traditional finance with cutting-edge blockchain securities solutions.
+             Recognized by Analytics Insight magazine for pioneering innovation in capital markets and blockchain technologies. Featured for leadership in bridging traditional finance with cutting-edge digital securities solutions.
             </motion.p>
 
             <motion.div 
@@ -55,12 +55,12 @@ export default function MediaRecognition() {
             >
               {[
                 {
-                  title: "Strive For Success",
-                  description: "Leveraging AI Strategies and AI Governance in Organizations"
+                  title: "Digital Securities are the Future of Capital Markets",
+                  description: "The speed, transparency, and efficiency of digital securities versus traditional equities makes them a foregone conclusion as the backbone of Capital Markets of the future"
                 },
                 {
-                  title: "Essential Leadership",
-                  description: "Skills to Inculcate in the Age of AI"
+                  title: "Surround Yourself With The Best",
+                  description: "Create your team with like-minded people who have complimentary skill sets, rely on them, and the rest will do itself"
                 }
               ].map((item, index) => (
                 <motion.div 

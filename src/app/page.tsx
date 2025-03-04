@@ -11,6 +11,7 @@ import MediaRecognition from '@/components/MediaPec'
 import Footer from '@/components/Footer'
 import FeaturedArticles from '@/components/FeaturedArticles'
 import Script from 'next/script'
+import { motion } from 'framer-motion'
 
 const img = David_main.src
 
@@ -47,25 +48,31 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({ children }) => {
 // Update the GridBackground component for better mobile performance
 const GridBackground: React.FC = () => {
   const [gridItems, setGridItems] = React.useState(500);
+  const [activeNodes, setActiveNodes] = React.useState<number[]>([]);
 
   React.useEffect(() => {
-    // Update grid items based on window width
     const updateGridItems = () => {
       setGridItems(window.innerWidth > 768 ? 1000 : 500);
     };
-
-    // Set initial value
     updateGridItems();
-
-    // Add event listener for window resize
     window.addEventListener('resize', updateGridItems);
 
-    // Cleanup
-    return () => window.removeEventListener('resize', updateGridItems);
-  }, []);
+    const interval = setInterval(() => {
+      const newActiveNodes = Array.from({ length: 5 }, () => 
+        Math.floor(Math.random() * gridItems)
+      );
+      setActiveNodes(newActiveNodes);
+    }, 3000);
+
+    return () => {
+      window.removeEventListener('resize', updateGridItems);
+      clearInterval(interval);
+    };
+  }, [gridItems]);
 
   return (
-    <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 w-full h-full bg-white">
+      {/* Base grid */}
       <div className="absolute inset-0 w-full h-full 
         grid 
         grid-cols-[repeat(auto-fill,minmax(20px,1fr))] 
@@ -74,18 +81,61 @@ const GridBackground: React.FC = () => {
         grid-rows-[repeat(auto-fill,minmax(20px,1fr))] 
         md:grid-rows-[repeat(auto-fill,minmax(30px,1fr))]
         lg:grid-rows-[repeat(auto-fill,minmax(40px,1fr))]
-        opacity-[0.4]"
+        opacity-70"
       >
         {Array.from({ length: gridItems }).map((_, index) => (
-          <div
+          <motion.div
             key={index}
-            className="border border-black/[0.05] dark:border-white/[0.05]"
+            className={`
+              relative border border-slate-100
+              ${activeNodes.includes(index) ? 'before:absolute before:inset-0 before:bg-emerald-50' : ''}
+            `}
             style={{
-              boxShadow: 'inset 0 0 1px rgba(0, 0, 0, 0.03)',
+              boxShadow: 'inset 0 0 1px rgba(100, 116, 139, 0.05)',
             }}
-          />
+          >
+            {activeNodes.includes(index) && (
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-blue-400" />
+              </motion.div>
+            )}
+          </motion.div>
         ))}
       </div>
+
+      {/* Connection lines with modern gradient */}
+      <svg className="absolute inset-0 w-full h-full opacity-40">
+        <defs>
+          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(52, 211, 153, 0)" /> {/* emerald-400 */}
+            <stop offset="50%" stopColor="rgba(52, 211, 153, 0.2)" /> {/* emerald-400 */}
+            <stop offset="100%" stopColor="rgba(96, 165, 250, 0.2)" /> {/* blue-400 */}
+          </linearGradient>
+        </defs>
+        {activeNodes.map((node, i) => {
+          if (i === activeNodes.length - 1) return null;
+          const nextNode = activeNodes[i + 1];
+          return (
+            <motion.line
+              key={`line-${i}`}
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              exit={{ pathLength: 0, opacity: 0 }}
+              x1={`${(node % 40) * 2.5}%`}
+              y1={`${Math.floor(node / 40) * 2.5}%`}
+              x2={`${(nextNode % 40) * 2.5}%`}
+              y2={`${Math.floor(nextNode / 40) * 2.5}%`}
+              stroke="url(#lineGradient)"
+              strokeWidth="1.5"
+            />
+          );
+        })}
+      </svg>
     </div>
   );
 };
@@ -130,10 +180,13 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PersonSchema) }}
       />
       
-      <main className="min-h-screen bg-white relative flex flex-col overflow-x-hidden">
-        {/* Single grid background for entire page */}
+      {/* Background layer */}
+      <div className="fixed inset-0 z-0">
         <GridBackground />
-        
+      </div>
+      
+      {/* Content layer */}
+      <main className="relative z-10 min-h-screen flex flex-col">
         <Hero />
         
         <ViewportSection>
@@ -145,7 +198,7 @@ export default function Home() {
             imageSrc={img} 
             title="About" 
             subtitle="David Hanegraaf" 
-            paragraph="David Hanegraaf is a seasoned executive with over 20 years of experience in capital raising, corporate finance, operations management, public listings, and technology start-ups. He has a strong background in structuring and financing early-stage technology companies and renewable energy projects across Canada, USA, UK, Hong Kong, Iceland, South Africa, Australia, and Panama." 
+            paragraph="David Hanegraaf is a seasoned professional with over 25 years of experience in capital raising, corporate finance, public listings, and technology start-ups. He has a strong background in structuring and financing early-stage technology companies and renewable energy projects with on-the-ground experience in dozens of countries. His most recent endeavors include launching The Global Sustainability Fund in partnership with the UN." 
           />
         </ViewportSection>
 

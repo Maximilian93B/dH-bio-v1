@@ -62,7 +62,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
     <section
       ref={sectionRef}
       id='about'
-      className="min-h-[80vh] sm:min-h-screen flex flex-col lg:flex-row relative overflow-hidden"
+      className="min-h-[80vh] sm:min-h-screen flex flex-col lg:flex-row relative overflow-hidden bg-white/50 backdrop-blur-sm z-10"
     >
       {/* Text Content */}
       <motion.div
