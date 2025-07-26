@@ -52,53 +52,56 @@ const articles: Article[] = [
 ]
 const FeaturedArticles: React.FC<{ isInView?: boolean }> = ({ isInView }) => {
   return (
-    <section className="py-12 sm:py-20 relative overflow-hidden">
-      {/* Content container with increased relative z-index */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-20 sm:py-28 md:py-36 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Header with transparent background */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
         >
-          <h2 className="text-5xl font-bold text-neutral-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
             Featured Articles
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto" />
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto rounded-full" />
         </motion.div>
 
         {/* Articles Grid */}
-        <div className="grid gap-4 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article, index) => (
             <motion.article
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative backdrop-blur-sm bg-white/80 p-4 sm:p-6 rounded-lg border border-neutral-200 hover:border-neutral-300 transition-all duration-300"
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative h-full"
             >
-              <div className="mb-3 sm:mb-4">
-                <p className="text-xs sm:text-sm text-neutral-500 mb-2">
-                  {article.publication} • {article.date}
-                </p>
-                <h3 className="text-base sm:text-xl font-semibold text-neutral-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
-                  {article.title}
-                </h3>
-                <p className="text-sm sm:text-base text-neutral-600">
-                  {article.description}
-                </p>
+              <div className="glass rounded-xl p-8 h-full flex flex-col hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
+                <div className="flex-1">
+                  <p className="text-sm text-neutral-500 mb-3 font-medium uppercase tracking-wider">
+                    {article.publication} • {article.date}
+                  </p>
+                  <h3 className="text-xl font-semibold text-neutral-900 mb-3 group-hover:text-primary-700 transition-colors duration-300">
+                    {article.title}
+                  </h3>
+                  <p className="text-base text-neutral-600 leading-relaxed">
+                    {article.description}
+                  </p>
+                </div>
+                
+                <motion.a
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors duration-300 mt-6"
+                  whileHover={{ x: 3 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Read Article
+                  <ExternalLink className="ml-2 w-4 h-4" />
+                </motion.a>
               </div>
-              
-              <a
-                href={article.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-sm font-medium text-emerald-600 hover:text-emerald-700 transition-colors duration-300"
-              >
-                Read Article
-                <ExternalLink className="ml-2 w-4 h-4" />
-              </a>
             </motion.article>
           ))}
         </div>

@@ -11,7 +11,7 @@ import MediaRecognition from '@/components/MediaPec'
 import Footer from '@/components/Footer'
 import FeaturedArticles from '@/components/FeaturedArticles'
 import Script from 'next/script'
-import { motion } from 'framer-motion'
+import { BackgroundDots } from '@/components/ui/background-dots'
 
 const img = David_main.src
 
@@ -30,11 +30,11 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({ children }) => {
   const ref = useRef(null)
   const isInView = useInView(ref, {
     once: true,
-    margin: "-50px 0px"
+    margin: "-100px 0px"
   })
 
   return (
-    <div ref={ref} className="w-full px-4 md:px-6 lg:px-8">
+    <div ref={ref} className="w-full">
       {React.Children.map(children, child => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, { isInView } as WithIsInView)
@@ -45,100 +45,6 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({ children }) => {
   )
 }
 
-// Update the GridBackground component for better mobile performance
-const GridBackground: React.FC = () => {
-  const [gridItems, setGridItems] = React.useState(500);
-  const [activeNodes, setActiveNodes] = React.useState<number[]>([]);
-
-  React.useEffect(() => {
-    const updateGridItems = () => {
-      setGridItems(window.innerWidth > 768 ? 1000 : 500);
-    };
-    updateGridItems();
-    window.addEventListener('resize', updateGridItems);
-
-    const interval = setInterval(() => {
-      const newActiveNodes = Array.from({ length: 5 }, () => 
-        Math.floor(Math.random() * gridItems)
-      );
-      setActiveNodes(newActiveNodes);
-    }, 3000);
-
-    return () => {
-      window.removeEventListener('resize', updateGridItems);
-      clearInterval(interval);
-    };
-  }, [gridItems]);
-
-  return (
-    <div className="absolute inset-0 w-full h-full bg-white">
-      {/* Base grid */}
-      <div className="absolute inset-0 w-full h-full 
-        grid 
-        grid-cols-[repeat(auto-fill,minmax(20px,1fr))] 
-        md:grid-cols-[repeat(auto-fill,minmax(30px,1fr))] 
-        lg:grid-cols-[repeat(auto-fill,minmax(40px,1fr))] 
-        grid-rows-[repeat(auto-fill,minmax(20px,1fr))] 
-        md:grid-rows-[repeat(auto-fill,minmax(30px,1fr))]
-        lg:grid-rows-[repeat(auto-fill,minmax(40px,1fr))]
-        opacity-70"
-      >
-        {Array.from({ length: gridItems }).map((_, index) => (
-          <motion.div
-            key={index}
-            className={`
-              relative border border-slate-100
-              ${activeNodes.includes(index) ? 'before:absolute before:inset-0 before:bg-emerald-50' : ''}
-            `}
-            style={{
-              boxShadow: 'inset 0 0 1px rgba(100, 116, 139, 0.05)',
-            }}
-          >
-            {activeNodes.includes(index) && (
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0, opacity: 0 }}
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-blue-400" />
-              </motion.div>
-            )}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Connection lines with modern gradient */}
-      <svg className="absolute inset-0 w-full h-full opacity-40">
-        <defs>
-          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(52, 211, 153, 0)" /> {/* emerald-400 */}
-            <stop offset="50%" stopColor="rgba(52, 211, 153, 0.2)" /> {/* emerald-400 */}
-            <stop offset="100%" stopColor="rgba(96, 165, 250, 0.2)" /> {/* blue-400 */}
-          </linearGradient>
-        </defs>
-        {activeNodes.map((node, i) => {
-          if (i === activeNodes.length - 1) return null;
-          const nextNode = activeNodes[i + 1];
-          return (
-            <motion.line
-              key={`line-${i}`}
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              exit={{ pathLength: 0, opacity: 0 }}
-              x1={`${(node % 40) * 2.5}%`}
-              y1={`${Math.floor(node / 40) * 2.5}%`}
-              x2={`${(nextNode % 40) * 2.5}%`}
-              y2={`${Math.floor(nextNode / 40) * 2.5}%`}
-              stroke="url(#lineGradient)"
-              strokeWidth="1.5"
-            />
-          );
-        })}
-      </svg>
-    </div>
-  );
-};
 
 // Add JSON-LD Schema
 const PersonSchema = {
@@ -181,8 +87,8 @@ export default function Home() {
       />
       
       {/* Background layer */}
-      <div className="fixed inset-0 z-0">
-        <GridBackground />
+      <div className="fixed inset-0 bg-white" style={{ zIndex: 0 }}>
+        <BackgroundDots />
       </div>
       
       {/* Content layer */}
