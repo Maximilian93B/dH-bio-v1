@@ -66,7 +66,7 @@ const About: React.FC = () => {
   ]
 
   return (
-    <section id="about" className="py-12 sm:py-20 md:py-32 relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
       {/* Remove any background colors/gradients that might block the grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
@@ -76,7 +76,7 @@ const About: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 md:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
             Strategic Financial Leadership
           </h2>
           <motion.p 
@@ -128,7 +128,7 @@ const About: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
                   className="bg-white border border-neutral-200 rounded-lg p-6 text-center"
                 >
-                  <div className="text-3xl md:text-4xl font-bold text-neutral-900 mb-1">{stat.value}</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 mb-1">{stat.value}</div>
                   <div className="text-sm md:text-base text-neutral-600">{stat.label}</div>
                 </motion.div>
               ))}

@@ -1,77 +1,39 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Linkedin, Mail, Instagram } from 'lucide-react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { TypewriterEffect } from '@/components/ui/text-animation-typewriter'
+import { getSocialLinks } from '@/utils/socialLinks'
 
-// Modern Title Transition Component
-const ModernTitleTransition: React.FC<{ titles: string[] }> = ({ titles }) => {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % titles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [titles.length]);
-
-  return (
-    <div className="h-16 flex items-center justify-center overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -50, opacity: 0 }}
-          transition={{
-            y: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 }
-          }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-black"
-        >
-          {titles[currentIndex]}
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-};
 
 //  MinimalBars Component
 const MinimalBars: React.FC = () => {
   return (
-    <div className="absolute bottom-0 left-0 right-0 h-72 opacity-[0.35]">
-      <div className="flex items-end h-full gap-[2px] sm:gap-[2px]">
+    <div className="absolute bottom-0 left-0 right-0 h-72 opacity-20">
+      <div className="flex items-end h-full gap-1">
         {Array.from({ length: 40 }).map((_, i) => {
           const gradientClass = i % 3 === 0 
-            ? "bg-gradient-to-t from-emerald-500 via-emerald-400 to-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.35)]"
+            ? "bg-gradient-to-t from-primary-600/40 via-primary-500/30 to-primary-400/20"
             : i % 3 === 1
-            ? "bg-gradient-to-t from-blue-500 via-blue-400 to-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.35)]"
-            : "bg-gradient-to-t from-teal-500 via-teal-400 to-teal-300 shadow-[0_0_15px_rgba(20,184,166,0.35)]";
+            ? "bg-gradient-to-t from-secondary-600/40 via-secondary-500/30 to-secondary-400/20"
+            : "bg-gradient-to-t from-primary-500/40 via-primary-400/30 to-secondary-400/20";
           
           return (
             <motion.div
               key={i}
-              className={`hidden sm:block flex-1 ${gradientClass}`}
+              className={`hidden sm:block flex-1 rounded-t ${gradientClass}`}
               initial={{ height: '20%' }}
               animate={{ 
-                height: `${20 + Math.random() * 60}%`,
-                opacity: [0.7, 1, 0.7]
+                height: `${30 + Math.random() * 50}%`,
               }}
               transition={{
                 height: {
-                  duration: 2 + Math.random() * 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                  delay: i * 0.05,
-                },
-                opacity: {
                   duration: 3 + Math.random() * 2,
                   repeat: Infinity,
                   repeatType: "reverse",
                   ease: "easeInOut",
-                  delay: i * 0.05,
-                }
+                  delay: i * 0.08,
+                },
               }}
             />
           );
@@ -80,35 +42,27 @@ const MinimalBars: React.FC = () => {
         {/* Mobile bars with enhanced gradients */}
         {Array.from({ length: 20 }).map((_, i) => {
           const gradientClass = i % 3 === 0 
-            ? "bg-gradient-to-t from-emerald-500 via-emerald-400 to-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.35)]"
+            ? "bg-gradient-to-t from-primary-600/40 via-primary-500/30 to-primary-400/20"
             : i % 3 === 1
-            ? "bg-gradient-to-t from-blue-500 via-blue-400 to-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.35)]"
-            : "bg-gradient-to-t from-teal-500 via-teal-400 to-teal-300 shadow-[0_0_15px_rgba(20,184,166,0.35)]";
+            ? "bg-gradient-to-t from-secondary-600/40 via-secondary-500/30 to-secondary-400/20"
+            : "bg-gradient-to-t from-primary-500/40 via-primary-400/30 to-secondary-400/20";
           
           return (
             <motion.div
               key={i}
-              className={`block sm:hidden flex-1 ${gradientClass}`}
+              className={`block sm:hidden flex-1 rounded-t ${gradientClass}`}
               initial={{ height: '20%' }}
               animate={{ 
-                height: `${20 + Math.random() * 60}%`,
-                opacity: [0.7, 1, 0.7]
+                height: `${30 + Math.random() * 50}%`,
               }}
               transition={{
                 height: {
-                  duration: 2 + Math.random() * 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                  delay: i * 0.05,
-                },
-                opacity: {
                   duration: 3 + Math.random() * 2,
                   repeat: Infinity,
                   repeatType: "reverse",
                   ease: "easeInOut",
-                  delay: i * 0.05,
-                }
+                  delay: i * 0.08,
+                },
               }}
             />
           );
@@ -130,69 +84,36 @@ const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 300], [0, -100])
+  
+  const socialLinks = getSocialLinks("w-6 h-6")
 
-  const socialLinks = [
-    { 
-      icon: <Linkedin className="w-6 h-6" />, 
-      href: "https://www.linkedin.com/in/david-hanegraaf/",
-      label: "LinkedIn"
-    },
-    { 
-      icon: <Mail className="w-6 h-6" />, 
-      href: "mailto:David.hanegraaf@hec.ca",
-      label: "Email"
-    },
-    { 
-      icon: <Instagram className="w-6 h-6" />, 
-      href: "https://www.instagram.com/dave_hanegraaf999/profilecard/?igsh=NGxtMGYxYnBmZTNy",
-      label: "Instagram"
-    }
-  ]
 
   return (
-    <section ref={containerRef} className="relative py-24 min-h-screen flex items-center overflow-hidden">
+    <section ref={containerRef} className="relative py-16 sm:py-24 md:py-32 min-h-screen flex items-center overflow-hidden">
       <MinimalBars />
       
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/30 to-white/50 pointer-events-none" />
-      
-      {/* Floating orbs with modern gradients */}
       <motion.div
-        className="absolute top-20 left-20 w-20 h-20 rounded-full bg-gradient-to-r from-emerald-400/20 to-blue-400/20 blur-xl"
+        className="absolute bottom-20 right-10 sm:bottom-40 sm:right-40 w-32 sm:w-48 h-32 sm:h-48 rounded-full bg-gradient-to-r from-secondary-400/10 to-primary-400/10 blur-2xl sm:blur-3xl"
         animate={{
-          y: [0, 20, 0],
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
+          y: [0, -40, 0],
+          scale: [1, 1.3, 1],
         }}
         transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-40 right-40 w-32 h-32 rounded-full bg-gradient-to-r from-blue-400/20 to-emerald-400/20 blur-2xl"
-        animate={{
-          y: [0, -30, 0],
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 7,
+          duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
       
-      <motion.div style={{ y }} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32 relative z-10">
+      <motion.div style={{ y }} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28 relative z-10">
         <div className="text-center">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="text-5xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 inline-block relative">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-black via-black to-black/80">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-4 sm:mb-6 inline-block relative">
+              <span className="text-neutral-900">
                 David Hanegraaf
               </span>
             </h1>
@@ -202,16 +123,22 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="mb-8"
+            className="mb-6 sm:mb-8 h-16 sm:h-20 flex items-center justify-center"
           >
-            <ModernTitleTransition titles={titles} />
+            <TypewriterEffect 
+              words={titles}
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-900"
+              typingSpeed={100}
+              duration={1500}
+              deletingSpeed={50}
+            />
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
-            className="mt-6 max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-black leading-relaxed"
+            transition={{ delay: 0.7, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 sm:mt-8 max-w-3xl mx-auto text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-700 leading-relaxed font-light px-4 sm:px-0"
           >
             Senior financial executive with 25+ years of experience in global capital markets, sustainability investments, and technology innovation.
           </motion.p>
@@ -220,7 +147,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex justify-center gap-6 mt-8"
+            className="flex justify-center gap-4 sm:gap-6 mt-8 sm:mt-12"
           >
             {socialLinks.map((link, index) => (
               <motion.a
@@ -228,15 +155,17 @@ const Hero: React.FC = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black hover:text-black/80 transition-all duration-300 hover:scale-110"
-                whileHover={{ scale: 1.1 }}
+                className="group relative p-3 text-neutral-600 hover:text-primary-700 transition-all duration-300 hover:shadow-lg"
+                whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
                 aria-label={link.label}
               >
-                {link.icon}
+                <span className="absolute inset-0 rounded-xl bg-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative">{link.icon}</span>
+                <span className="sr-only">{link.label}</span>
               </motion.a>
             ))}
           </motion.div>
@@ -244,8 +173,7 @@ const Hero: React.FC = () => {
       </motion.div>
       
       {/* Modern decorative elements */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-400/30 to-transparent" />
     </section>
   )
 }

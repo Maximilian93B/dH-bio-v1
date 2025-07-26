@@ -62,11 +62,11 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
     <section
       ref={sectionRef}
       id='about'
-      className="min-h-[80vh] sm:min-h-screen flex flex-col lg:flex-row relative overflow-hidden bg-white/50 backdrop-blur-sm z-10"
+      className="min-h-[80vh] sm:min-h-screen flex flex-col lg:flex-row relative overflow-hidden z-10"
     >
       {/* Text Content */}
       <motion.div
-        className="flex-1 flex flex-col justify-center p-4 sm:p-6 md:p-12 lg:p-16 relative z-10 bg-white/40 backdrop-blur-[2px]"
+        className="flex-1 flex flex-col justify-center p-4 sm:p-6 md:p-12 lg:p-16 relative z-10"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
@@ -127,7 +127,7 @@ const FullScreenSection: React.FC<FullScreenSectionProps> = ({
 
       {/* Image Section */}
       <motion.div
-        className="flex-1 relative min-h-[300px] sm:min-h-[400px] lg:min-h-screen bg-white/30"
+        className="flex-1 relative min-h-[300px] sm:min-h-[400px] lg:min-h-screen"
         initial={{ opacity: 0, scale: 1.0 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 1 }}

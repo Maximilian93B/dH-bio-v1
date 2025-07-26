@@ -7,10 +7,8 @@ import { Award, ArrowUpRight } from 'lucide-react'
 
 export default function MediaRecognition() {
   return (
-    <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-white/50 backdrop-blur-sm z-10">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/30 pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section className="py-20 sm:py-28 md:py-36 relative overflow-hidden z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
           {/* Text Content - Improved spacing and typography */}
           <motion.div
@@ -22,18 +20,18 @@ export default function MediaRecognition() {
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-black/[0.03] backdrop-blur-[2px] px-3 py-1.5 rounded-full text-sm text-black/70"
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-100 to-secondary-100 px-4 py-2 rounded-full text-sm font-medium text-primary-800"
             >
-              <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <Award className="w-4 h-4" />
               <span>Industry Recognition</span>
             </motion.div>
             
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black"
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900"
             >
              The 10 Most Influential Tech Leaders of 2021
             </motion.h2>
@@ -41,8 +39,8 @@ export default function MediaRecognition() {
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-sm sm:text-base md:text-lg text-black/70 leading-relaxed"
+              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="text-lg md:text-xl text-neutral-600 leading-relaxed font-light"
             >
              Recognized by Analytics Insight magazine for pioneering innovation in capital markets and blockchain technologies. Featured for leadership in bridging traditional finance with cutting-edge digital securities solutions.
             </motion.p>
@@ -66,16 +64,16 @@ export default function MediaRecognition() {
                 <motion.div 
                   key={index}
                   whileHover={{ x: 4 }}
-                  className="flex items-start gap-2 sm:gap-3 group"
+                  className="flex items-start gap-3 group glass rounded-xl p-4 hover:shadow-soft transition-all duration-300"
                 >
-                  <div className="flex-shrink-0 p-1.5 bg-black/[0.03] rounded group-hover:bg-black/[0.05] transition-colors duration-300">
-                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black/70" />
+                  <div className="flex-shrink-0 p-2 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg group-hover:from-primary-200 group-hover:to-secondary-200 transition-all duration-300">
+                    <ArrowUpRight className="w-5 h-5 text-primary-700" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-black text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">
+                    <h3 className="font-semibold text-neutral-900 text-lg mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-sm md:text-base text-black/70">
+                    <p className="text-base text-neutral-600">
                       {item.description}
                     </p>
                   </div>
@@ -87,12 +85,12 @@ export default function MediaRecognition() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm md:text-base pt-2 sm:pt-4"
+              transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-3 text-sm pt-6"
             >
-              <div className="text-black/50">As featured in</div>
-              <div className="text-sm sm:text-base md:text-lg font-semibold text-black">Analytics Insight</div>
-              <div className="text-black/50">September 2021</div>
+              <div className="text-neutral-500 font-medium">As featured in</div>
+              <div className="text-lg font-semibold text-primary-700">Analytics Insight</div>
+              <div className="text-neutral-500 font-medium">September 2021</div>
             </motion.div>
           </motion.div>
 
@@ -100,19 +98,19 @@ export default function MediaRecognition() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="order-1 lg:order-2"
           >
-            <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-sm mx-auto lg:max-w-none shadow-lg">
+            <div className="relative aspect-[3/4] w-full max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none rounded-xl overflow-hidden shadow-xl">
               <Image
                 src="/Dave_About.jpeg"
                 alt="David Hanegraaf featured in Analytics Insight Magazine"
                 fill
                 sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 45vw"
-                className="object-cover rounded-lg backdrop-blur-[2px]"
+                className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 rounded-lg shadow-inner pointer-events-none border border-black/[0.05]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
             </div>
           </motion.div>
         </div>

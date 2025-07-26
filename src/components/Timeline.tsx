@@ -32,34 +32,32 @@ const Timeline: React.FC = () => {
   return (
     <section 
       ref={ref} 
-      className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-white/60 backdrop-blur-sm z-10"
+      className="py-20 sm:py-28 md:py-36 relative overflow-hidden z-10"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
             Career Milestones
           </h2>
           <motion.p 
-            className="text-base md:text-xl text-neutral-600 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-neutral-600 max-w-2xl mx-auto font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             A journey of innovation, leadership, and transformative achievements
           </motion.p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-12"> 
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16"> 
           <div className="lg:w-2/3">
             <div className="relative">
-              <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5 bg-black/[0.05]"></div>
+              <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px h-full w-0.5 bg-gradient-to-b from-primary-200 via-primary-300 to-secondary-200"></div>
               {timelineEvents.map((event, index) => (
                 <motion.div 
                   key={index}
@@ -78,46 +76,45 @@ const Timeline: React.FC = () => {
                   custom={index}
                   initial="hidden"
                   animate={controls}
-                  className="mb-4 sm:mb-6 md:mb-8 flex flex-col lg:flex-row items-start lg:items-center w-full pl-12 sm:pl-16 lg:pl-0"
+                  className="mb-8 flex flex-col lg:flex-row items-start lg:items-center w-full pl-16 lg:pl-0"
                 >
-                  <div className="lg:w-5/12 lg:text-right pr-8 mb-2 lg:mb-0">
-                    <h3 className="text-lg md:text-xl font-bold text-neutral-900">{event.year}</h3>
+                  <div className="lg:w-5/12 lg:text-right lg:pr-8 mb-2 lg:mb-0">
+                    <h3 className="text-xl font-semibold text-neutral-900">{event.year}</h3>
                   </div>
-                  <div className="absolute left-6 lg:static lg:w-2/12 flex justify-start lg:justify-center">
-                    <motion.div 
-                      className="w-4 h-4 bg-black/80 hover:bg-black rounded-full cursor-pointer flex items-center justify-center"
-                      whileHover={{ scale: 1.2, backgroundColor: "#404040" }}
+                  <div className="absolute left-6 lg:left-auto lg:relative lg:w-2/12 flex justify-start lg:justify-center">
+                    <motion.button 
+                      className="w-6 h-6 bg-gradient-to-br from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 rounded-full cursor-pointer flex items-center justify-center shadow-soft hover:shadow-medium transition-all duration-300"
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.95 }}
                       onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+                      aria-label={expandedIndex === index ? "Collapse details" : "Expand details"}
                     >
                       <motion.span
                         initial={{ rotate: 0 }}
                         animate={{ rotate: expandedIndex === index ? 45 : 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-white font-bold text-sm leading-none flex items-center justify-center"
-                        style={{ 
-                          height: '16px',
-                          marginTop: '-1px'
-                        }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-white font-medium text-lg leading-none"
                       >
                         +
                       </motion.span>
-                    </motion.div>
+                    </motion.button>
                   </div>
-                  <div className="lg:w-5/12 pl-0 lg:pl-8">
+                  <div className="lg:w-5/12 lg:pl-8">
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                      className="glass rounded-xl p-6 hover:shadow-soft transition-all duration-300"
                     >
-                      <p className="text-sm sm:text-base md:text-lg font-semibold text-neutral-900 mb-2">{event.event}</p>
+                      <p className="text-lg font-semibold text-neutral-900 mb-2">{event.event}</p>
                       <AnimatePresence>
                         {expandedIndex === index && (
                           <motion.p
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="text-sm md:text-base text-neutral-600"
+                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                            className="text-base text-neutral-600 mt-3"
                           >
                             {event.details}
                           </motion.p>
@@ -131,24 +128,27 @@ const Timeline: React.FC = () => {
           </div>
           
           <div className="lg:w-1/3">
-            <div className="sticky top-32 flex items-center justify-center h-full">
-              <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-md rounded-lg overflow-hidden">
+            <motion.div 
+              className="sticky top-32 flex items-center justify-center h-full"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="relative aspect-[3/4] w-full max-w-[320px] rounded-xl overflow-hidden shadow-large">
                 <Image
                   src="/David_Tech.jpg"
                   alt="David Hanegraaf"
                   fill
                   priority
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="rounded-lg object-cover"
+                  className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-black/[0.05]" />
-      <div className="absolute top-0 left-0 w-full h-px bg-black/[0.05]" />
     </section>
   )
 }
